@@ -3,9 +3,75 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: light;
+  --color-soft-black: #12100f;
+  --color-charcoal: #1d1a18;
+  --color-off-white: #f2eee6;
+  --color-brass: #8f7a52;
 }
 
+html,
 body {
-  @apply bg-white text-zinc-900 antialiased;
+  background: var(--color-soft-black);
+  color: var(--color-off-white);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  border-color: color-mix(in srgb, var(--color-charcoal) 80%, black 20%);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-brass) 22%, transparent 78%);
+  color: var(--color-off-white);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-off-white) 24%, transparent 76%);
+  transition: border-color 240ms ease, color 240ms ease;
+}
+
+a:hover {
+  color: color-mix(in srgb, var(--color-off-white) 85%, var(--color-brass) 15%);
+  border-bottom-color: color-mix(in srgb, var(--color-off-white) 40%, transparent 60%);
+}
+
+strong,
+b {
+  font-weight: 500;
+}
+
+.u-grain {
+  position: relative;
+  isolation: isolate;
+}
+
+.u-grain::before {
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.1;
+  background-image:
+    radial-gradient(circle at 25% 15%, rgba(255, 255, 255, 0.08) 0, transparent 42%),
+    radial-gradient(circle at 82% 78%, rgba(255, 255, 255, 0.06) 0, transparent 38%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.03),
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+}
+
+.u-soft-surface {
+  background: linear-gradient(
+    155deg,
+    color-mix(in srgb, var(--color-charcoal) 80%, black 20%) 0%,
+    color-mix(in srgb, var(--color-soft-black) 70%, black 30%) 100%
+  );
 }
