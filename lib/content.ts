@@ -27,6 +27,16 @@ function readFileSafe(filePath: string) {
   return fs.readFileSync(filePath, "utf8");
 }
 
+function normalizeFrontmatter<TFrontmatter extends FrontmatterBase>(
+  data: Record<string, unknown>
+): TFrontmatter {
+  const normalized: Record<string, unknown> = { ...data };
+  if (normalized.date instanceof Date) {
+    normalized.date = normalized.date.toISOString().slice(0, 10);
+  }
+  return normalized as TFrontmatter;
+}
+
 export function getAllSlugs(type: ContentType) {
   const dir = contentDir(type);
   const files = fs.readdirSync(dir);
@@ -54,7 +64,7 @@ export function getContentBySlug<TFrontmatter extends FrontmatterBase = Frontmat
 
   return {
     slug,
-    frontmatter: (parsed.data || {}) as TFrontmatter,
+    frontmatter: normalizeFrontmatter<TFrontmatter>((parsed.data || {}) as Record<string, unknown>),
     content: parsed.content,
   };
 }

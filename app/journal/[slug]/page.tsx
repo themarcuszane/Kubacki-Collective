@@ -9,11 +9,12 @@ export function generateStaticParams() {
   return slugs.map((slug) => ({ slug }));
 }
 
-export default function JournalPostPage({ params }: { params: { slug: string } }) {
+export default async function JournalPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   let item: { slug: string; frontmatter: FrontmatterBase; content: string };
 
   try {
-    item = getContentBySlug<FrontmatterBase>("journal", params.slug);
+    item = getContentBySlug<FrontmatterBase>("journal", slug);
   } catch {
     notFound();
   }

@@ -10,11 +10,12 @@ export function generateStaticParams() {
   return slugs.map((slug) => ({ slug }));
 }
 
-export default function ChapterPage({ params }: { params: { slug: string } }) {
+export default async function ChapterPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   let item: { slug: string; frontmatter: FrontmatterBase; content: string };
 
   try {
-    item = getContentBySlug<FrontmatterBase>("chapters", params.slug);
+    item = getContentBySlug<FrontmatterBase>("chapters", slug);
   } catch {
     notFound();
   }

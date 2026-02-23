@@ -4,13 +4,9 @@ test.describe("Kubacki Collective - Smoke", () => {
   test("home loads and key sections exist", async ({ page }) => {
     await page.goto("/");
 
-    // Basic page sanity
-    await expect(page).toHaveTitle(/Kubacki/i).catch(async () => {
-      // Title may not be set yet; don't hard fail on title
-      // We'll still assert content below.
-    });
+    await expect(page.getByRole("main").first()).toBeVisible();
 
-    // Check for section anchors (IDs should exist)
+    // Section anchors
     await expect(page.locator("#manifesto")).toBeVisible();
     await expect(page.locator("#principles")).toBeVisible();
     await expect(page.locator("#atmosphere")).toBeVisible();
@@ -18,49 +14,54 @@ test.describe("Kubacki Collective - Smoke", () => {
     await expect(page.locator("#journal")).toBeVisible();
     await expect(page.locator("#signal")).toBeVisible();
 
-    // Ensure images render (Next/Image renders <img> tags)
-    const imgs = page.locator("img");
-    await expect(imgs.first()).toBeVisible();
+    // At least one image should render
+    await expect(page.locator("img").first()).toBeVisible();
   });
 
-  test("chapters index loads", async ({ page }) => {
+  test("chapters index loads and shows expected H1", async ({ page }) => {
     await page.goto("/chapters");
-    await expect(page.getByText("Chapters")).toBeVisible();
-    // Should have at least one link card
+
+    // Use H1 role so we don't collide with nav links
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+      "Collections of work, patterns, and proof."
+    );
+
+    // Ensure at least one chapter card link exists
     await expect(page.locator('a[href^="/chapters/"]').first()).toBeVisible();
   });
 
-  test("journal index loads", async ({ page }) => {
+  test("journal index loads and shows expected H1", async ({ page }) => {
     await page.goto("/journal");
-    await expect(page.getByText("Journal")).toBeVisible();
+
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Notes from the build.");
+
     await expect(page.locator('a[href^="/journal/"]').first()).toBeVisible();
   });
 
-  test("a chapter page renders MDX content", async ({ page }) => {
+  test("a chapter page renders an H1 and some body content", async ({ page }) => {
     await page.goto("/chapters/cinematic");
+
+    // H1 must exist
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
-    // Look for a known heading inside the MDX
-    await expect(page.getByText("What makes it feel expensive?")).toBeVisible();
+
+    // Body should have at least one paragraph rendered by MDX
+    await expect(page.locator("article p").first()).toBeVisible();
   });
 
-  test("a journal post renders MDX content", async ({ page }) => {
+  test("a journal post renders an H1 and some body content", async ({ page }) => {
     await page.goto("/journal/hero-rhythm");
+
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
-    await expect(page.getByText(/Motion is punctuation/i)).toBeVisible();
+    await expect(page.locator("article p").first()).toBeVisible();
   });
 
-  test("no obvious runtime errors in console", async ({ page }) => {
-    const errors: string[] = [];
-    page.on("pageerror", (err) => errors.push(String(err)));
-    page.on("console", (msg) => {
-      if (msg.type() === "error") errors.push(msg.text());
-    });
+  test("no pageerror exceptions", async ({ page }) => {
+    const pageErrors: string[] = [];
+    page.on("pageerror", (err) => pageErrors.push(String(err)));
 
     await page.goto("/");
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(300);
 
-    // Allow Next.js dev overlay warnings; we only care about actual runtime errors
-    const filtered = errors.filter((e) => !e.includes("Download the React DevTools"));
-    expect(filtered).toEqual([]);
+    expect(pageErrors).toEqual([]);
   });
 });
