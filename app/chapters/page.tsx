@@ -8,7 +8,7 @@ export default function ChaptersPage() {
   const chapters = listChapters();
 
   return (
-    <main
+    <section
       style={{
         maxWidth: theme.containers.content,
         margin: '0 auto',
@@ -53,6 +53,6 @@ export default function ChaptersPage() {
           </li>
         ))}
       </StaggerGroup>
-    </main>
+    </section>
   );
 }

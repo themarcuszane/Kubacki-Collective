@@ -2,7 +2,7 @@ import { theme } from '@/lib/theme';
 
 export default function CollectivePage() {
   return (
-    <main
+    <section
       style={{
         maxWidth: theme.containers.narrow,
         margin: '0 auto',
@@ -28,6 +28,6 @@ export default function CollectivePage() {
       >
         Collective placeholder page.
       </p>
-    </main>
+    </section>
   );
 }

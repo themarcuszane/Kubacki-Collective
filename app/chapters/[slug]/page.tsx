@@ -14,8 +14,8 @@ export default function ChapterPage({ params }: { params: { slug: string } }) {
   if (!MDXContent) notFound();
 
   return (
-    <main className="prose mx-auto max-w-3xl p-8">
+    <article className="prose mx-auto max-w-3xl px-6 py-16">
       <MDXContent />
-    </main>
+    </article>
   );
 }

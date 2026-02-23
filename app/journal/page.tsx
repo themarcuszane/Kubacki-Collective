@@ -6,7 +6,7 @@ export default function JournalPage() {
   const entries = listJournal();
 
   return (
-    <main
+    <section
       style={{
         maxWidth: theme.containers.content,
         margin: '0 auto',
@@ -37,6 +37,6 @@ export default function JournalPage() {
           </li>
         ))}
       </ul>
-    </main>
+    </section>
   );
 }
