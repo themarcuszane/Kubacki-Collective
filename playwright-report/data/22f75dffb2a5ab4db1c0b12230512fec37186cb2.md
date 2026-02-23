@@ -1,0 +1,212 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "Kubacki mark Kubacki" [ref=e5] [cursor=pointer]:
+          - /url: /
+          - img "Kubacki mark" [ref=e6]
+          - generic [ref=e11]: Kubacki
+        - navigation [ref=e12]:
+          - link "Collective" [ref=e13] [cursor=pointer]:
+            - /url: /collective
+          - link "Chapters" [ref=e14] [cursor=pointer]:
+            - /url: /chapters
+          - link "Journal" [ref=e15] [cursor=pointer]:
+            - /url: /journal
+    - main [ref=e16]:
+      - main [ref=e17]:
+        - region "Kubacki Hero" [ref=e18]:
+          - img "Kubacki atmospheric hero" [ref=e21]
+          - generic [ref=e22]:
+            - heading "Kubacki Collective" [level=1] [ref=e24]
+            - paragraph [ref=e26]: A lifestyle creative movement.
+            - paragraph [ref=e28]: Not for everyone.
+            - button "Enter the Collective" [ref=e30] [cursor=pointer]
+        - generic [ref=e34]:
+          - paragraph [ref=e37]: Manifesto
+          - generic [ref=e38]:
+            - generic [ref=e39]:
+              - heading "Build with taste. Ship with intent." [level=2] [ref=e40]
+              - paragraph [ref=e41]: Kubacki Collective is a small studio for modern web craft — cinematic presentation, accessible systems, and quiet excellence.
+            - generic [ref=e43]:
+              - generic [ref=e44]:
+                - paragraph [ref=e45]: "We care about the details people feel but can’t always name: rhythm, spacing, tone, performance. We sweat the edges so the core stays simple."
+                - generic [ref=e46]:
+                  - generic [ref=e47]: Cinematic UI
+                  - generic [ref=e48]: WCAG-first
+                  - generic [ref=e49]: Motion with restraint
+              - generic [ref=e50]:
+                - paragraph [ref=e51]: Our work lives where design and engineering overlap — systems that scale and pages that persuade. A brand is a feeling. A product is a promise.
+                - generic [ref=e52]:
+                  - generic [ref=e53]: Design systems
+                  - generic [ref=e54]: Next.js + Tailwind
+                  - generic [ref=e55]: MDX publishing
+        - generic [ref=e61]:
+          - paragraph [ref=e64]: Principles
+          - generic [ref=e65]:
+            - generic [ref=e66]:
+              - heading "A few rules we refuse to break." [level=2] [ref=e67]
+              - paragraph [ref=e68]: These are the guardrails. They keep the work sharp when the schedule gets loud.
+            - generic [ref=e70]:
+              - generic [ref=e71]:
+                - generic [ref=e72]:
+                  - heading "Clarity beats clever." [level=3] [ref=e73]
+                  - generic [ref=e74]: "01"
+                - paragraph [ref=e75]: "Interfaces should read like good writing: direct, confident, and calm."
+              - generic [ref=e76]:
+                - generic [ref=e77]:
+                  - heading "Speed is a feature." [level=3] [ref=e78]
+                  - generic [ref=e79]: "02"
+                - paragraph [ref=e80]: Performance isn’t a metric — it’s an experience. We build for the moment.
+              - generic [ref=e81]:
+                - generic [ref=e82]:
+                  - heading "Accessibility is craft." [level=3] [ref=e83]
+                  - generic [ref=e84]: "03"
+                - paragraph [ref=e85]: Inclusive systems are better systems. We ship semantic, navigable, resilient UI.
+              - generic [ref=e86]:
+                - generic [ref=e87]:
+                  - heading "Motion is punctuation." [level=3] [ref=e88]
+                  - generic [ref=e89]: "04"
+                - paragraph [ref=e90]: Animation should guide attention, not demand it. Intentional movement only.
+              - generic [ref=e91]:
+                - generic [ref=e92]:
+                  - heading "Systemize taste." [level=3] [ref=e93]
+                  - generic [ref=e94]: "05"
+                - paragraph [ref=e95]: A design system isn’t components — it’s decisions. We document the why.
+              - generic [ref=e96]:
+                - generic [ref=e97]:
+                  - heading "Ship, learn, refine." [level=3] [ref=e98]
+                  - generic [ref=e99]: "06"
+                - paragraph [ref=e100]: We keep momentum, measure outcomes, and iterate with discipline.
+        - generic [ref=e104]:
+          - generic [ref=e106]:
+            - generic [ref=e107]:
+              - paragraph [ref=e110]: Atmosphere
+              - heading "Texture, light, and quiet confidence." [level=2] [ref=e111]
+              - paragraph [ref=e112]: "A Kubacki page should feel like walking into a well-tuned listening room: focused, warm, and precise. Minimal noise. Maximum signal."
+              - generic [ref=e113]:
+                - generic [ref=e114]:
+                  - paragraph [ref=e115]: Tone
+                  - paragraph [ref=e116]: Cinematic, grounded, human.
+                - generic [ref=e117]:
+                  - paragraph [ref=e118]: Materials
+                  - paragraph [ref=e119]: Soft gradients, grain, and depth.
+                - generic [ref=e120]:
+                  - paragraph [ref=e121]: Motion
+                  - paragraph [ref=e122]: Slow in. Quick out. Never jittery.
+                - generic [ref=e123]:
+                  - paragraph [ref=e124]: Type
+                  - paragraph [ref=e125]: Readable hierarchy. Air between lines.
+            - img "Cinematic architectural light and shadow representing the Kubacki Collective atmosphere." [ref=e128]
+          - paragraph [ref=e130]: "Note: Add your own image at /public/images/home-atmosphere.jpg"
+        - generic [ref=e136]:
+          - paragraph [ref=e139]: Chapters
+          - generic [ref=e140]:
+            - generic [ref=e141]:
+              - heading "Small collections. Big intention." [level=2] [ref=e142]
+              - paragraph [ref=e143]: "A few curated threads: projects, experiments, and proof that taste can be systematic."
+            - generic [ref=e144]:
+              - generic [ref=e146]:
+                - generic [ref=e147]:
+                  - heading "Featured chapters" [level=3] [ref=e148]
+                  - paragraph [ref=e149]: A chapter is a theme with receipts — pages, patterns, and published notes.
+                  - generic [ref=e150]:
+                    - link "Cinematic landing pages Hero choreography, image treatment, and narrative hierarchy." [ref=e151] [cursor=pointer]:
+                      - /url: /chapters/cinematic
+                      - generic [ref=e152]:
+                        - generic [ref=e153]:
+                          - paragraph [ref=e154]: Cinematic landing pages
+                          - paragraph [ref=e155]: Hero choreography, image treatment, and narrative hierarchy.
+                        - generic [ref=e156]: →
+                    - link "Systems that scale Tokens, components, and the boring stuff done beautifully." [ref=e157] [cursor=pointer]:
+                      - /url: /chapters/systems
+                      - generic [ref=e158]:
+                        - generic [ref=e159]:
+                          - paragraph [ref=e160]: Systems that scale
+                          - paragraph [ref=e161]: Tokens, components, and the boring stuff done beautifully.
+                        - generic [ref=e162]: →
+                    - link "Publishing with MDX Fast authoring, clean typography, and durable content." [ref=e163] [cursor=pointer]:
+                      - /url: /chapters/publishing
+                      - generic [ref=e164]:
+                        - generic [ref=e165]:
+                          - paragraph [ref=e166]: Publishing with MDX
+                          - paragraph [ref=e167]: Fast authoring, clean typography, and durable content.
+                        - generic [ref=e168]: →
+                  - link "Explore chapters" [ref=e170] [cursor=pointer]:
+                    - /url: /chapters
+                - generic [ref=e171]:
+                  - img "Modern architectural geometry representing structure and system." [ref=e172]
+                  - generic [ref=e175]:
+                    - paragraph [ref=e176]: Current focus
+                    - paragraph [ref=e177]: Build a home for essays, case studies, and artifacts — without losing the cinematic feel.
+              - paragraph [ref=e178]: "Note: Add your own image at /public/images/home-chapters.jpg"
+        - generic [ref=e184]:
+          - paragraph [ref=e187]: Journal
+          - generic [ref=e188]:
+            - generic [ref=e189]:
+              - heading "Notes from the build." [level=2] [ref=e190]
+              - paragraph [ref=e191]: Short posts on craft, systems, and what we learned the hard way.
+            - generic [ref=e192]:
+              - generic [ref=e193]:
+                - 'link "Coming soon Why the hero should feel slower than the scroll A simple motion rule: enter slow, exit quick. It reads as confidence. Read more" [ref=e194] [cursor=pointer]':
+                  - /url: /journal/hero-rhythm
+                  - paragraph [ref=e195]: Coming soon
+                  - heading "Why the hero should feel slower than the scroll" [level=3] [ref=e196]
+                  - paragraph [ref=e197]: "A simple motion rule: enter slow, exit quick. It reads as confidence."
+                  - generic [ref=e198]: Read more →
+                - link "Coming soon The design system isn’t components — it’s decisions Tokens, constraints, and the difference between consistency and sameness. Read more" [ref=e199] [cursor=pointer]:
+                  - /url: /journal/system-decisions
+                  - paragraph [ref=e200]: Coming soon
+                  - heading "The design system isn’t components — it’s decisions" [level=3] [ref=e201]
+                  - paragraph [ref=e202]: Tokens, constraints, and the difference between consistency and sameness.
+                  - generic [ref=e203]: Read more →
+                - 'link "Coming soon MDX: publish like a product team A lightweight way to ship content with the same standards as your UI. Read more" [ref=e204] [cursor=pointer]':
+                  - /url: /journal/mdx-publishing
+                  - paragraph [ref=e205]: Coming soon
+                  - 'heading "MDX: publish like a product team" [level=3] [ref=e206]'
+                  - paragraph [ref=e207]: A lightweight way to ship content with the same standards as your UI.
+                  - generic [ref=e208]: Read more →
+              - link "Read the journal" [ref=e210] [cursor=pointer]:
+                - /url: /journal
+        - generic [ref=e216]:
+          - generic [ref=e217]:
+            - paragraph [ref=e220]: Signal
+            - heading "Get the good stuff. No spam. No noise." [level=2] [ref=e221]
+            - paragraph [ref=e222]: Occasional notes on design systems, performance, motion, and building websites that feel expensive.
+            - generic [ref=e223]:
+              - generic [ref=e224]: 1–2 emails / month
+              - generic [ref=e225]: Unsubscribe anytime
+              - generic [ref=e226]: Zero fluff
+          - generic [ref=e227]:
+            - generic [ref=e228]:
+              - generic [ref=e229]: Email
+              - generic [ref=e230]:
+                - textbox "Email" [ref=e231]:
+                  - /placeholder: marcus@kubackicollective.com
+                - button "Join" [ref=e232] [cursor=pointer]
+              - paragraph [ref=e233]: (We’ll wire this to a real list provider next — this is just UI.)
+            - generic [ref=e234]:
+              - paragraph [ref=e235]: Promise
+              - paragraph [ref=e236]: If it isn’t helpful, we won’t send it. Signal only.
+    - contentinfo [ref=e237]:
+      - generic [ref=e238]:
+        - paragraph [ref=e239]: Kubacki Collective — a lifestyle creative movement.
+        - navigation [ref=e240]:
+          - link "Collective" [ref=e241] [cursor=pointer]:
+            - /url: /collective
+          - link "Chapters" [ref=e242] [cursor=pointer]:
+            - /url: /chapters
+          - link "Journal" [ref=e243] [cursor=pointer]:
+            - /url: /journal
+        - generic [ref=e244]:
+          - generic [ref=e245]: Email
+          - textbox "Email" [ref=e246]:
+            - /placeholder: Email for quiet updates
+          - button "Join" [ref=e247] [cursor=pointer]
+  - button "Open Next.js Dev Tools" [ref=e253] [cursor=pointer]:
+    - img [ref=e254]
+  - alert [ref=e257]
+```

@@ -1,32 +1,16 @@
-import Hero from '@/components/Hero';
-import Reveal from '@/components/Reveal';
-import { theme } from '@/lib/theme';
+import * as React from "react";
+
+// IMPORTANT: Keep your existing hero import(s) the same.
+// Replace this with whatever your hero component is actually called.
+import { HomeHero } from "@/components/home/hero";
+
+import { HomeBelowHeroSections } from "@/components/home/sections";
 
 export default function HomePage() {
   return (
-    <>
-      <Hero />
-      <section
-        id="home-intro"
-        style={{
-          maxWidth: theme.containers.content,
-          margin: '0 auto',
-          padding: `${theme.sectionPadding.y} ${theme.sectionPadding.x}`
-        }}
-      >
-        <Reveal variant="slowReveal">
-          <p
-            style={{
-              fontSize: theme.typography.headline,
-              lineHeight: 1.15,
-              letterSpacing: '-0.01em',
-              maxWidth: '24ch'
-            }}
-          >
-            A collective shaped by intention, culture, and quiet signal.
-          </p>
-        </Reveal>
-      </section>
-    </>
+    <main className="min-h-screen bg-black text-white">
+      <HomeHero />
+      <HomeBelowHeroSections />
+    </main>
   );
 }
