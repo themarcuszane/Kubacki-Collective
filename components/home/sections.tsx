@@ -6,6 +6,14 @@ import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { CinematicOverlay } from "@/components/ui/cinematic-overlay";
 
+type HomeTeaserItem = {
+  slug: string;
+  title: string;
+  description?: string;
+  date?: string;
+  tag?: string;
+};
+
 type SectionProps = {
   id: string;
   eyebrow: string;
@@ -284,8 +292,10 @@ export function AtmosphereSection() {
 /**
  * Chapters teaser
  */
-export function ChaptersTeaserSection() {
+export function ChaptersTeaserSection(props: { items: HomeTeaserItem[] }) {
   const m = useMotion();
+  const items = props.items ?? [];
+
   return (
     <>
       <SectionShell
@@ -305,25 +315,37 @@ export function ChaptersTeaserSection() {
             <div className="md:col-span-6 p-6 md:p-8">
               <h3 className="text-lg md:text-xl font-semibold text-white">Featured chapters</h3>
               <p className="mt-2 text-sm leading-relaxed text-white/70">
-                A chapter is a theme with receipts — pages, patterns, and published notes.
+                Chapters are curated threads — the systems behind the aesthetic.
               </p>
 
               <div className="mt-5 grid grid-cols-1 gap-3">
-                <ChapterCard
-                  title="Cinematic landing pages"
-                  desc="Hero choreography, image treatment, and narrative hierarchy."
-                  href="/chapters/cinematic"
-                />
-                <ChapterCard
-                  title="Systems that scale"
-                  desc="Tokens, components, and the boring stuff done beautifully."
-                  href="/chapters/systems"
-                />
-                <ChapterCard
-                  title="Publishing with MDX"
-                  desc="Fast authoring, clean typography, and durable content."
-                  href="/chapters/publishing"
-                />
+                {items.length ? (
+                  items.map((i) => (
+                    <Link
+                      key={i.slug}
+                      href={`/chapters/${i.slug}`}
+                      className="group rounded-2xl border border-white/10 bg-white/[0.02] p-4 hover:bg-white/[0.04] transition"
+                    >
+                      <div className="flex items-start justify-between gap-4">
+                        <div>
+                          <p className="text-sm font-medium text-white/85 group-hover:text-white transition">
+                            {i.title}
+                          </p>
+                          {i.description ? (
+                            <p className="mt-1 text-xs leading-relaxed text-white/60">{i.description}</p>
+                          ) : null}
+                        </div>
+                        <span className="text-white/40 group-hover:text-white/70 transition" aria-hidden>
+                          →
+                        </span>
+                      </div>
+                    </Link>
+                  ))
+                ) : (
+                  <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-4">
+                    <p className="text-sm text-white/70">No chapters published yet.</p>
+                  </div>
+                )}
               </div>
 
               <div className="mt-6">
@@ -357,10 +379,6 @@ export function ChaptersTeaserSection() {
             </div>
           </div>
         </motion.div>
-
-        <p className="mt-4 text-xs text-white/50">
-          Note: Add your own image at <span className="text-white/70">/public/images/home-chapters.jpg</span>
-        </p>
       </SectionShell>
       <Divider />
     </>
@@ -389,8 +407,10 @@ function ChapterCard(props: { title: string; desc: string; href: string }) {
 /**
  * Journal teaser
  */
-export function JournalTeaserSection() {
+export function JournalTeaserSection(props: { items: HomeTeaserItem[] }) {
   const m = useMotion();
+  const items = props.items ?? [];
+
   return (
     <>
       <SectionShell
@@ -406,24 +426,32 @@ export function JournalTeaserSection() {
           transition={m.transition}
           className="grid grid-cols-1 gap-4 md:grid-cols-3"
         >
-          <PostCard
-            title="Why the hero should feel slower than the scroll"
-            date="Coming soon"
-            excerpt="A simple motion rule: enter slow, exit quick. It reads as confidence."
-            href="/journal/hero-rhythm"
-          />
-          <PostCard
-            title="The design system isn’t components — it’s decisions"
-            date="Coming soon"
-            excerpt="Tokens, constraints, and the difference between consistency and sameness."
-            href="/journal/system-decisions"
-          />
-          <PostCard
-            title="MDX: publish like a product team"
-            date="Coming soon"
-            excerpt="A lightweight way to ship content with the same standards as your UI."
-            href="/journal/mdx-publishing"
-          />
+          {items.length ? (
+            items.map((i) => (
+              <Link
+                key={i.slug}
+                href={`/journal/${i.slug}`}
+                className="group rounded-2xl border border-white/10 bg-white/[0.02] p-5 hover:bg-white/[0.04] transition"
+              >
+                <p className="text-xs uppercase tracking-[0.24em] text-white/50">
+                  {i.date ? i.date : i.tag ? i.tag : "Journal"}
+                </p>
+                <h3 className="mt-3 text-base font-semibold text-white/85 group-hover:text-white transition">
+                  {i.title}
+                </h3>
+                {i.description ? (
+                  <p className="mt-2 text-sm leading-relaxed text-white/65">{i.description}</p>
+                ) : null}
+                <div className="mt-4 text-sm text-white/60 group-hover:text-white/80 transition">
+                  Read more <span aria-hidden>→</span>
+                </div>
+              </Link>
+            ))
+          ) : (
+            <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-5 md:col-span-3">
+              <p className="text-sm text-white/70">No journal posts published yet.</p>
+            </div>
+          )}
         </motion.div>
 
         <div className="mt-6">
@@ -559,21 +587,5 @@ export function SignalSignupSection() {
         </motion.div>
       </div>
     </section>
-  );
-}
-
-/**
- * Export a single composed component for convenience.
- */
-export function HomeBelowHeroSections() {
-  return (
-    <>
-      <ManifestoSection />
-      <PrinciplesSection />
-      <AtmosphereSection />
-      <ChaptersTeaserSection />
-      <JournalTeaserSection />
-      <SignalSignupSection />
-    </>
   );
 }

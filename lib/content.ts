@@ -88,3 +88,11 @@ export function getAllContent<TFrontmatter extends FrontmatterBase = Frontmatter
 
   return nonDraft;
 }
+
+export function getLatestContent<TFrontmatter extends FrontmatterBase = FrontmatterBase>(
+  type: ContentType,
+  limit: number
+): Array<ContentItem<TFrontmatter>> {
+  const all = getAllContent<TFrontmatter>(type);
+  return all.slice(0, Math.max(0, limit));
+}

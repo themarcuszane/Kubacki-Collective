@@ -4,7 +4,7 @@ import * as React from "react";
 // Replace this with whatever your hero component is actually called.
 import { HomeHero } from "@/components/home/hero";
 
-import { HomeBelowHeroSections } from "@/components/home/sections";
+import { HomeBelowHeroSections } from "@/components/home/home-sections.server";
 
 export default function HomePage() {
   return (
