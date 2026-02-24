@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { theme } from '@/lib/theme';
 
-const navItems = [
+const navItems: Array<{ href: string; label: string }> = [
   // { href: '/chapters', label: 'Chapters' },
   // { href: '/journal', label: 'Journal' }
 ];

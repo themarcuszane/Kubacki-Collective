@@ -5,11 +5,6 @@ import { useEffect, useState } from 'react';
 import Mark from '@/components/Mark';
 import { theme } from '@/lib/theme';
 
-// const navItems = [
-//   { label: "Home", href: "/" },
-//   { label: "Collective", href: "/collective" },
-// ];
-
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
 
