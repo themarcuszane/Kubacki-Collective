@@ -42,9 +42,9 @@ export default function RotatingCollectiveBackdrop({
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
+      className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
     >
-      <div className="absolute inset-0 bg-black/25" />
+      <div className="absolute inset-0 bg-black/5" />
       <AnimatePresence mode="wait">
         <motion.div
           key={src}
@@ -55,6 +55,8 @@ export default function RotatingCollectiveBackdrop({
           transition={{ duration: reduceMotion ? 0 : 0.9, ease: "easeInOut" }}
           style={blurPx > 0 ? { filter: `blur(${blurPx}px)` } : undefined}
         >
+          
+<div className="relative h-full w-full">
           <Image
             src={src}
             alt=""
@@ -63,10 +65,11 @@ export default function RotatingCollectiveBackdrop({
             sizes="100vw"
             className="object-cover"
           />
+        </div>
         </motion.div>
       </AnimatePresence>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/10 to-black/45" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-black/5 to-black/20" />
     </div>
   );
 }

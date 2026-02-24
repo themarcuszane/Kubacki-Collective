@@ -7,9 +7,11 @@ import RotatingCollectiveBackdrop from "../../components/collective/RotatingColl
 
 export default function CollectivePage() {
   return (
-    <main className="relative min-h-screen bg-black text-white overflow-hidden">
-      <RotatingCollectiveBackdrop opacity={0.18} intervalMs={5200} blurPx={0} />
-      <div className={`${container} relative z-10 pt-14 md:pt-20 pb-20`}>
+    <main className="relative min-h-screen  text-white overflow-hidden">
+      <RotatingCollectiveBackdrop opacity={0.55} intervalMs={5200} blurPx={0} />
+      
+      <div className="relative z-10">
+        <div className={`${container} relative z-10 pt-14 md:pt-20 pb-20`}>
         <p className="text-xs uppercase tracking-[0.24em] text-white/60">Collective</p>
         <h1 className="mt-3 text-3xl md:text-5xl font-semibold tracking-tight text-white">
           Taste, systems, and quiet execution.
@@ -20,7 +22,7 @@ export default function CollectivePage() {
         </p>
 
         <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-12 md:gap-6">
-          <section className="md:col-span-7 rounded-3xl border border-white/10 bg-white/[0.02] p-6 md:p-8">
+          <section className="md:col-span-7 rounded-3xl border border-white/10  ">
             <h2 className="text-xl md:text-2xl font-semibold text-white">What we build</h2>
             <p className="mt-3 text-sm md:text-base leading-relaxed text-white/70">
               Brand-forward marketing sites. Publishing systems. Design systems. Product UI. And the connective tissue
@@ -28,39 +30,39 @@ export default function CollectivePage() {
             </p>
 
             <div className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-2">
-              <div className="rounded-2xl border border-white/10 bg-black/30 p-4">
+              <div className="rounded-2xl border border-white/10 /30 p-4">
                 <p className="text-xs uppercase tracking-[0.24em] text-white/55">Cinematic front-ends</p>
                 <p className="mt-2 text-sm text-white/75">Hero choreography, image treatment, narrative hierarchy.</p>
               </div>
-              <div className="rounded-2xl border border-white/10 bg-black/30 p-4">
+              <div className="rounded-2xl border border-white/10 /30 p-4">
                 <p className="text-xs uppercase tracking-[0.24em] text-white/55">Systems that scale</p>
                 <p className="mt-2 text-sm text-white/75">Tokens, components, rules — documented and durable.</p>
               </div>
-              <div className="rounded-2xl border border-white/10 bg-black/30 p-4">
+              <div className="rounded-2xl border border-white/10 /30 p-4">
                 <p className="text-xs uppercase tracking-[0.24em] text-white/55">Publishing with MDX</p>
                 <p className="mt-2 text-sm text-white/75">Fast authoring with the same standards as UI.</p>
               </div>
-              <div className="rounded-2xl border border-white/10 bg-black/30 p-4">
+              <div className="rounded-2xl border border-white/10 /30 p-4">
                 <p className="text-xs uppercase tracking-[0.24em] text-white/55">Accessibility-first</p>
                 <p className="mt-2 text-sm text-white/75">Semantics, contrast, focus states, reduced motion.</p>
               </div>
             </div>
           </section>
 
-          <aside className="md:col-span-5 rounded-3xl border border-white/10 bg-white/[0.02] p-6 md:p-8">
+          <aside className="md:col-span-5 rounded-3xl border border-white/10  ">
             <h2 className="text-xl md:text-2xl font-semibold text-white">The manifesto</h2>
             <p className="mt-3 text-sm leading-relaxed text-white/70">
               Clarity beats clever. Speed is a feature. Accessibility is craft. Motion is punctuation.
               Ship, learn, refine.
             </p>
 
-            <div className="mt-6 rounded-2xl border border-white/10 bg-black/30 p-4">
+            <div className="mt-6 rounded-2xl border border-white/10 /30 p-4">
               <p className="text-xs uppercase tracking-[0.24em] text-white/55">Start here</p>
               <div className="mt-3 flex flex-col gap-2">
                 {/*
                 <Link
                   href="/chapters"
-                  className="rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white/80 hover:bg-white/[0.05] transition"
+                  className="rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white/80 hover: "
                 >
                   Explore Chapters <span aria-hidden>→</span>
                 </Link>
@@ -68,7 +70,7 @@ export default function CollectivePage() {
                 {/*
                 <Link
                   href="/journal"
-                  className="rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white/80 hover:bg-white/[0.05] transition"
+                  className="rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white/80 hover: "
                 >
                   Read the Journal <span aria-hidden>→</span>
                 </Link>
@@ -80,6 +82,7 @@ export default function CollectivePage() {
               This site is actively being built — the Journal is the changelog.
             </p>
           </aside>
+        </div>
         </div>
       </div>
     </main>
