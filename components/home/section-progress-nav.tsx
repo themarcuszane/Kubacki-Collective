@@ -6,7 +6,7 @@ type Item = { label: string; href: string };
 
 const navItems: Item[] = [
   { label: "Manifesto", href: "#manifesto" },
-  { label: "Principles", href: "#principles" },
+  { label: "Collective", href: "/collective" },
 ];
 
 export function SectionProgressNav() {
