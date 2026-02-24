@@ -5,11 +5,10 @@ import { useEffect, useState } from 'react';
 import Mark from '@/components/Mark';
 import { theme } from '@/lib/theme';
 
-const navItems = [
-  { href: '/collective', label: 'Collective' },
-  // { href: '/chapters', label: 'Chapters' },
-  // { href: '/journal', label: 'Journal' }
-];
+// const navItems = [
+//   { label: "Home", href: "/" },
+//   { label: "Collective", href: "/collective" },
+// ];
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -65,22 +64,7 @@ export default function Header() {
           <span>Kubacki</span>
         </Link>
 
-        <nav
-          style={{
-            display: 'flex',
-            gap: theme.spacing.xl,
-            alignItems: 'center',
-            fontSize: theme.typography.small,
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase'
-          }}
-        >
-          {navItems.map((item) => (
-            <Link key={item.href} href={item.href}>
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        {/* Navigation intentionally disabled */}
       </div>
     </header>
   );
