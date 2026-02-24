@@ -388,7 +388,7 @@ export function ChaptersTeaserSection(props: { items: HomeTeaserItem[] }) {
 
               <div className="mt-6">
                 <Link
-                  href="/chapters"
+                  href="/collective"
                   className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/[0.05] px-5 py-2 text-sm text-white/85 hover:bg-white/[0.08] transition"
                 >
                   Explore chapters
@@ -503,7 +503,7 @@ export function JournalTeaserSection(props: { items: HomeTeaserItem[] }) {
 
         <div className="mt-6">
           <Link
-            href="/journal"
+            href="/collective"
             className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/[0.05] px-5 py-2 text-sm text-white/85 hover:bg-white/[0.08] transition"
           >
             Read the journal
