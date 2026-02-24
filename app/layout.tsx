@@ -12,6 +12,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
+        <div className="fixed inset-0 -z-10">
+          <div className="absolute inset-0 bg-black" />
+          <div
+            className="absolute inset-0 opacity-[0.06] bg-cover bg-center"
+            style={{ backgroundImage: "url('/images/collective/texture.jpg')" }}
+          />
+        </div>
         <div className="u-grain" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
           <Header />
           <main

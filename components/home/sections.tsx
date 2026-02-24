@@ -58,7 +58,7 @@ function useMotion() {
 function SectionShell(props: SectionProps) {
   const m = useMotion();
   return (
-    <section id={props.id} className={cn("relative py-16 md:py-24", props.className)}>
+    <section id={props.id} className={cn("relative py-12 md:py-14", props.className)}>
       <div className={container}>
         <motion.div {...m}>
           <div className="flex flex-col gap-4 md:gap-6">
@@ -98,7 +98,7 @@ function Pill(props: { children: React.ReactNode }) {
 
 function Divider() {
   return (
-    <div className="mx-auto w-full max-w-6xl px-6 md:px-8">
+    <div className="mx-auto my-8 w-full max-w-6xl px-6 md:my-10 md:px-8">
       <div className="h-px w-full bg-white/10" />
     </div>
   );
@@ -108,6 +108,13 @@ function Divider() {
  * Manifesto
  */
 export function ManifestoSection() {
+  const [expanded, setExpanded] = React.useState(false);
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+  const isExpanded = mounted ? expanded : false;
+
   return (
     <>
       <SectionShell
@@ -120,8 +127,7 @@ export function ManifestoSection() {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
           <div className={cn("rounded-2xl p-6 md:p-7", softBorder, "bg-white/[0.03]")}>
             <p className="text-sm md:text-base leading-relaxed text-white/80">
-              We care about the details people feel but can’t always name: rhythm, spacing, tone,
-              performance. We sweat the edges so the core stays simple.
+              We build for feel: rhythm, spacing, tone, and speed. Every detail supports a clear signal.
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
               <Pill>Cinematic UI</Pill>
@@ -130,17 +136,27 @@ export function ManifestoSection() {
             </div>
           </div>
 
-          <div className={cn("rounded-2xl p-6 md:p-7", softBorder, "bg-white/[0.02]")}>
-            <p className="text-sm md:text-base leading-relaxed text-white/80">
-              Our work lives where design and engineering overlap — systems that scale and pages that
-              persuade. A brand is a feeling. A product is a promise.
-            </p>
-            <div className="mt-5 flex flex-wrap gap-2">
-              <Pill>Design systems</Pill>
-              <Pill>Next.js + Tailwind</Pill>
-              <Pill>MDX publishing</Pill>
+          {isExpanded ? (
+            <div className={cn("rounded-2xl p-6 md:p-7", softBorder, "bg-white/[0.02]")}>
+              <p className="text-sm md:text-base leading-relaxed text-white/80">
+                Design and engineering move together here. Systems scale, and pages persuade.
+              </p>
+              <div className="mt-5 flex flex-wrap gap-2">
+                <Pill>Design systems</Pill>
+                <Pill>Next.js + Tailwind</Pill>
+                <Pill>MDX publishing</Pill>
+              </div>
             </div>
-          </div>
+          ) : null}
+        </div>
+        <div className="mt-6">
+          <button
+            type="button"
+            onClick={() => setExpanded((value) => !value)}
+            className="inline-flex items-center rounded-full border border-white/15 bg-white/[0.05] px-4 py-2 text-xs tracking-[0.18em] text-white/80 hover:bg-white/[0.08] transition"
+          >
+            {isExpanded ? "Show less" : "Read more"}
+          </button>
         </div>
       </SectionShell>
       <Divider />
@@ -155,37 +171,44 @@ const principles: Array<{ title: string; body: string; index: string }> = [
   {
     index: "01",
     title: "Clarity beats clever.",
-    body: "Interfaces should read like good writing: direct, confident, and calm.",
+    body: "Say less, mean more.",
   },
   {
     index: "02",
     title: "Speed is a feature.",
-    body: "Performance isn’t a metric — it’s an experience. We build for the moment.",
+    body: "Fast feels like respect.",
   },
   {
     index: "03",
     title: "Accessibility is craft.",
-    body: "Inclusive systems are better systems. We ship semantic, navigable, resilient UI.",
+    body: "Inclusive systems are stronger systems.",
   },
   {
     index: "04",
     title: "Motion is punctuation.",
-    body: "Animation should guide attention, not demand it. Intentional movement only.",
+    body: "Use movement to guide attention.",
   },
   {
     index: "05",
     title: "Systemize taste.",
-    body: "A design system isn’t components — it’s decisions. We document the why.",
+    body: "Document decisions, not just components.",
   },
   {
     index: "06",
     title: "Ship, learn, refine.",
-    body: "We keep momentum, measure outcomes, and iterate with discipline.",
+    body: "Release, learn, and improve quickly.",
   },
 ];
 
 export function PrinciplesSection() {
+  const [expanded, setExpanded] = React.useState(false);
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
   const m = useMotion();
+  const isExpanded = mounted ? expanded : false;
+  const visible = isExpanded ? principles : principles.slice(0, 3);
   return (
     <>
       <SectionShell
@@ -195,7 +218,7 @@ export function PrinciplesSection() {
         subtitle="These are the guardrails. They keep the work sharp when the schedule gets loud."
       >
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-          {principles.map((p) => (
+          {visible.map((p) => (
             <motion.div
               key={p.index}
               initial={m.initial}
@@ -211,6 +234,15 @@ export function PrinciplesSection() {
               <p className="mt-3 text-sm leading-relaxed text-white/70">{p.body}</p>
             </motion.div>
           ))}
+        </div>
+        <div className="mt-6">
+          <button
+            type="button"
+            onClick={() => setExpanded((value) => !value)}
+            className="inline-flex items-center rounded-full border border-white/15 bg-white/[0.05] px-4 py-2 text-xs tracking-[0.18em] text-white/80 hover:bg-white/[0.08] transition"
+          >
+            {isExpanded ? "Show less" : "Read more"}
+          </button>
         </div>
       </SectionShell>
       <Divider />
@@ -230,7 +262,7 @@ export function AtmosphereSection() {
         <div className={container}>
           <motion.div {...m} className="rounded-3xl border border-white/10 bg-white/[0.02] overflow-hidden">
             <div className="grid grid-cols-1 md:grid-cols-12">
-              <div className="md:col-span-7 p-6 md:p-10">
+              <div className="md:col-span-7 p-6 md:p-8">
                 <div className="flex items-center gap-3">
                   <div className="h-[1px] w-10 bg-white/20" />
                   <p className="text-xs uppercase tracking-[0.24em] text-white/60">Atmosphere</p>
@@ -239,8 +271,7 @@ export function AtmosphereSection() {
                   Texture, light, and quiet confidence.
                 </h2>
                 <p className="mt-3 text-sm md:text-base leading-relaxed text-white/70">
-                  A Kubacki page should feel like walking into a well-tuned listening room: focused,
-                  warm, and precise. Minimal noise. Maximum signal.
+                  A Kubacki page should feel focused, warm, and precise.
                 </p>
 
                 <div className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-2">
@@ -263,7 +294,7 @@ export function AtmosphereSection() {
                 </div>
               </div>
 
-              <div className="md:col-span-5 relative min-h-[260px] md:min-h-[520px] bg-black">
+              <div className="md:col-span-5 relative min-h-[220px] md:min-h-[360px] bg-black">
                 <div className="absolute inset-0">
                   <Image
                     src="/images/collective/home-atmosphere.jpg"
@@ -302,7 +333,7 @@ export function ChaptersTeaserSection(props: { items: HomeTeaserItem[] }) {
         id="chapters"
         eyebrow="Chapters"
         title="Small collections. Big intention."
-        subtitle="A few curated threads: projects, experiments, and proof that taste can be systematic."
+        subtitle="Curated threads that turn taste into proof."
       >
         <motion.div
           initial={m.initial}
@@ -365,7 +396,7 @@ export function ChaptersTeaserSection(props: { items: HomeTeaserItem[] }) {
               </div>
             </div>
 
-            <div className="md:col-span-6 relative min-h-[240px] md:min-h-[420px] bg-black">
+            <div className="md:col-span-6 relative min-h-[220px] md:min-h-[360px] bg-black">
               <Image
                 src="/images/collective/home-chapters.jpg"
                 alt="Modern architectural geometry representing structure and system."
@@ -379,7 +410,7 @@ export function ChaptersTeaserSection(props: { items: HomeTeaserItem[] }) {
                 <div className="rounded-2xl border border-white/10 bg-black/50 p-4 backdrop-blur">
                   <p className="text-xs uppercase tracking-[0.24em] text-white/55">Current focus</p>
                   <p className="mt-2 text-sm text-white/80">
-                    Build a home for essays, case studies, and artifacts — without losing the cinematic feel.
+                    Build a home for essays and artifacts without losing the cinematic edge.
                   </p>
                 </div>
               </div>
@@ -424,7 +455,7 @@ export function JournalTeaserSection(props: { items: HomeTeaserItem[] }) {
         id="journal"
         eyebrow="Journal"
         title="Notes from the build."
-        subtitle="Short posts on craft, systems, and what we learned the hard way."
+        subtitle="Short notes on craft, systems, and hard-earned lessons."
       >
         <motion.div
           initial={m.initial}
@@ -539,7 +570,7 @@ export function SignalSignupSection() {
                 Get the good stuff. No spam. No noise.
               </h2>
               <p className="mt-3 text-sm md:text-base leading-relaxed text-white/70">
-                Occasional notes on design systems, performance, motion, and building websites that feel expensive.
+                Occasional notes on systems, motion, and shipping polished web work.
               </p>
 
               <div className="mt-5 flex flex-wrap gap-2">

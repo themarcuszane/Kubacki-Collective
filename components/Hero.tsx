@@ -14,7 +14,7 @@ const heroImages = [
   '/images/hero/snow-fire.jpg'
 ] as const;
 
-const heroCycleMs = 9000;
+const heroCycleMs = 4500;
 
 export default function Hero() {
   const [activeIndex, setActiveIndex] = useState(0);

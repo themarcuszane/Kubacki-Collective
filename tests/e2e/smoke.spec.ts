@@ -49,10 +49,19 @@ test.describe("Kubacki Collective - Smoke", () => {
   });
 
   test("a journal post renders an H1 and some body content", async ({ page }) => {
-    await page.goto("/journal/hero-rhythm");
+    await page.goto("/journal/hero-rhythm", { waitUntil: "domcontentloaded" });
 
-    await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
-    await expect(page.locator("article p").first()).toBeVisible();
+    await expect(page).toHaveURL(/\/journal\/hero-rhythm/);
+
+    const h1 = page.locator("main h1").first();
+    await expect(h1).toHaveCount(1);
+    await h1.scrollIntoViewIfNeeded();
+    await expect(h1).toBeVisible();
+
+    const p = page.locator("article p").first();
+    await expect(p).toHaveCount(1);
+    await p.scrollIntoViewIfNeeded();
+    await expect(p).toBeVisible();
   });
 
   test("no pageerror exceptions", async ({ page }) => {
