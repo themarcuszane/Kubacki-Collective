@@ -114,12 +114,12 @@ export function ManifestoSection() {
         id="manifesto"
         eyebrow="Manifesto"
         title="Build with taste. Ship with intent."
-        subtitle="Kubacki Collective is a small studio for modern web craft — cinematic presentation, accessible systems, and quiet excellence."
+        subtitle="Look sharp. Stay loyal. Keep going."
         className="pt-10 md:pt-14"
       >
         <div className={cn("rounded-2xl p-6 md:p-7", softBorder, "bg-white/[0.03]")}>
           <p className="text-sm md:text-base leading-relaxed text-white/80">
-            He’s a man amongst memes-equal parts grit and grin. Always down for a Pendleton’s, always up for a sharper jacket and a deliberate look. A modern man with old-school taste: loyal to Marcus’s mom, forever faithful to Del Taco, and suspiciously energized by a good pub and a better story.
+            Kubacki Collective is not chasing noise. It’s built on deliberate style, quiet execution, and the long, unfinished ritual of getting things exactly right.
           </p>
           <p className="mt-6 text-sm md:text-base leading-relaxed text-white/80">
             He can, on occasion, twirl a Butterfinger clean into his mouth from across the room-an oddly specific talent he treats with appropriate seriousness. And when the lights go low, he has a habit of disappearing into his own strange rituals, searching the floor for whatever tiny, glittering thing he’s convinced is worth finding.
