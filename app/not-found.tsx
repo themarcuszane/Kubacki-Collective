@@ -18,18 +18,22 @@ export default function NotFound() {
           >
             Back home
           </Link>
+          {/*
           <Link
             href="/chapters"
             className="rounded-full border border-white/15 bg-white/[0.05] px-5 py-2 text-sm text-white/85 hover:bg-white/[0.08] transition"
           >
             Chapters
           </Link>
+          */}
+          {/*
           <Link
             href="/journal"
             className="rounded-full border border-white/15 bg-white/[0.05] px-5 py-2 text-sm text-white/85 hover:bg-white/[0.08] transition"
           >
             Journal
           </Link>
+          */}
         </div>
       </div>
     </main>

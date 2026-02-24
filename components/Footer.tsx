@@ -2,9 +2,8 @@ import Link from 'next/link';
 import { theme } from '@/lib/theme';
 
 const navItems = [
-  { href: '/collective', label: 'Collective' },
-  { href: '/chapters', label: 'Chapters' },
-  { href: '/journal', label: 'Journal' }
+  // { href: '/chapters', label: 'Chapters' },
+  // { href: '/journal', label: 'Journal' }
 ];
 
 export default function Footer() {

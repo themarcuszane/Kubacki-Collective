@@ -54,18 +54,22 @@ export default function CollectivePage() {
             <div className="mt-6 rounded-2xl border border-white/10 bg-black/30 p-4">
               <p className="text-xs uppercase tracking-[0.24em] text-white/55">Start here</p>
               <div className="mt-3 flex flex-col gap-2">
+                {/*
                 <Link
                   href="/chapters"
                   className="rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white/80 hover:bg-white/[0.05] transition"
                 >
                   Explore Chapters <span aria-hidden>→</span>
                 </Link>
+                */}
+                {/*
                 <Link
                   href="/journal"
                   className="rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white/80 hover:bg-white/[0.05] transition"
                 >
                   Read the Journal <span aria-hidden>→</span>
                 </Link>
+                */}
               </div>
             </div>
 
