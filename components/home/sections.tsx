@@ -108,13 +108,6 @@ function Divider() {
  * Manifesto
  */
 export function ManifestoSection() {
-  const [expanded, setExpanded] = React.useState(false);
-  const [mounted, setMounted] = React.useState(false);
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
-  const isExpanded = mounted ? expanded : false;
-
   return (
     <>
       <SectionShell
@@ -124,39 +117,19 @@ export function ManifestoSection() {
         subtitle="Kubacki Collective is a small studio for modern web craft — cinematic presentation, accessible systems, and quiet excellence."
         className="pt-10 md:pt-14"
       >
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
-          <div className={cn("rounded-2xl p-6 md:p-7", softBorder, "bg-white/[0.03]")}>
-            <p className="text-sm md:text-base leading-relaxed text-white/80">
-              We build for feel: rhythm, spacing, tone, and speed. Every detail supports a clear signal.
-            </p>
-            <div className="mt-5 flex flex-wrap gap-2">
-              <Pill>Cinematic UI</Pill>
-              <Pill>WCAG-first</Pill>
-              <Pill>Motion with restraint</Pill>
-            </div>
-          </div>
-
-          {isExpanded ? (
-            <div className={cn("rounded-2xl p-6 md:p-7", softBorder, "bg-white/[0.02]")}>
-              <p className="text-sm md:text-base leading-relaxed text-white/80">
-                Design and engineering move together here. Systems scale, and pages persuade.
-              </p>
-              <div className="mt-5 flex flex-wrap gap-2">
-                <Pill>Design systems</Pill>
-                <Pill>Next.js + Tailwind</Pill>
-                <Pill>MDX publishing</Pill>
-              </div>
-            </div>
-          ) : null}
-        </div>
-        <div className="mt-6">
-          <button
-            type="button"
-            onClick={() => setExpanded((value) => !value)}
-            className="inline-flex items-center rounded-full border border-white/15 bg-white/[0.05] px-4 py-2 text-xs tracking-[0.18em] text-white/80 hover:bg-white/[0.08] transition"
-          >
-            {isExpanded ? "Show less" : "Read more"}
-          </button>
+        <div className={cn("rounded-2xl p-6 md:p-7", softBorder, "bg-white/[0.03]")}>
+          <p className="text-sm md:text-base leading-relaxed text-white/80">
+            He’s a man amongst memes-equal parts grit and grin. Always down for a Pendleton’s, always up for a sharper jacket and a deliberate look. A modern man with old-school taste: loyal to Marcus’s mom, forever faithful to Del Taco, and suspiciously energized by a good pub and a better story.
+          </p>
+          <p className="mt-6 text-sm md:text-base leading-relaxed text-white/80">
+            He can, on occasion, twirl a Butterfinger clean into his mouth from across the room-an oddly specific talent he treats with appropriate seriousness. And when the lights go low, he has a habit of disappearing into his own strange rituals, searching the floor for whatever tiny, glittering thing he’s convinced is worth finding.
+          </p>
+          <p className="mt-6 text-sm md:text-base leading-relaxed text-white/80">
+            You’ll find him bounding from barstool to toolbox, moving with the confidence of someone who knows style matters-even when no one’s watching. And then there’s the garage. Seventeen years deep into a sacred ritual of sorting, sweeping, reorganizing, and declaring victory. The garage remains undefeated. He remains committed.
+          </p>
+          <p className="mt-6 text-sm md:text-base leading-relaxed text-white/80">
+            Legend isn’t built in a day. Apparently, neither is storage.
+          </p>
         </div>
       </SectionShell>
       <Divider />
