@@ -3,10 +3,13 @@ import Link from "next/link";
 
 const container = "mx-auto w-full max-w-6xl px-6 md:px-8";
 
+import RotatingCollectiveBackdrop from "../../components/collective/RotatingCollectiveBackdrop";
+
 export default function CollectivePage() {
   return (
-    <main className="min-h-screen bg-black text-white">
-      <div className={`${container} pt-14 md:pt-20 pb-20`}>
+    <main className="relative min-h-screen bg-black text-white overflow-hidden">
+      <RotatingCollectiveBackdrop opacity={0.18} intervalMs={5200} blurPx={0} />
+      <div className={`${container} relative z-10 pt-14 md:pt-20 pb-20`}>
         <p className="text-xs uppercase tracking-[0.24em] text-white/60">Collective</p>
         <h1 className="mt-3 text-3xl md:text-5xl font-semibold tracking-tight text-white">
           Taste, systems, and quiet execution.
