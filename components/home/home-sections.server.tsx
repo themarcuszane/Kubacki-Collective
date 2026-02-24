@@ -1,6 +1,6 @@
 // components/home/home-sections.server.tsx
 import * as React from "react";
-import { getLatestContent, type FrontmatterBase } from "@/lib/content";
+import { getFeaturedContent, type FrontmatterBase } from "@/lib/content";
 import { HomeBelowHeroSectionsClient } from "@/components/home/home-sections.client";
 
 export type HomeTeaserItem = {
@@ -22,8 +22,8 @@ function mapItem(i: { slug: string; frontmatter: FrontmatterBase }): HomeTeaserI
 }
 
 export function HomeBelowHeroSections() {
-  const latestJournal = getLatestContent("journal", 3).map(mapItem);
-  const latestChapters = getLatestContent("chapters", 3).map(mapItem);
+  const latestJournal = getFeaturedContent("journal", 3).map(mapItem);
+  const latestChapters = getFeaturedContent("chapters", 3).map(mapItem);
 
   return (
     <HomeBelowHeroSectionsClient

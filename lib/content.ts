@@ -96,3 +96,40 @@ export function getLatestContent<TFrontmatter extends FrontmatterBase = Frontmat
   const all = getAllContent<TFrontmatter>(type);
   return all.slice(0, Math.max(0, limit));
 }
+
+export function getFeaturedContent<TFrontmatter extends FrontmatterBase = FrontmatterBase>(
+  type: ContentType,
+  limit: number
+): Array<ContentItem<TFrontmatter>> {
+  const all = getAllContent<TFrontmatter>(type);
+
+  // "featured" is optional; treat missing as false.
+  const featured = all.filter((i: any) => Boolean((i.frontmatter as any)?.featured));
+
+  if (featured.length > 0) {
+    return featured.slice(0, Math.max(0, limit));
+  }
+
+  return all.slice(0, Math.max(0, limit));
+}
+
+export function formatDateYYYYMMDDToLong(date?: string): string | undefined {
+  if (!date) return undefined;
+  // date expected "YYYY-MM-DD"
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(date);
+  if (!m) return date;
+
+  const year = Number(m[1]);
+  const month = Number(m[2]);
+  const day = Number(m[3]);
+
+  const d = new Date(Date.UTC(year, month - 1, day));
+  if (Number.isNaN(d.getTime())) return date;
+
+  return new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    day: "2-digit",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(d);
+}

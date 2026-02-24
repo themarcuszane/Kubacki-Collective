@@ -331,6 +331,13 @@ export function ChaptersTeaserSection(props: { items: HomeTeaserItem[] }) {
                           <p className="text-sm font-medium text-white/85 group-hover:text-white transition">
                             {i.title}
                           </p>
+                          {i.tag ? (
+                            <div className="mt-2">
+                              <span className="inline-flex rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-[11px] tracking-[0.14em] text-white/60">
+                                {i.tag}
+                              </span>
+                            </div>
+                          ) : null}
                           {i.description ? (
                             <p className="mt-1 text-xs leading-relaxed text-white/60">{i.description}</p>
                           ) : null}
@@ -433,9 +440,18 @@ export function JournalTeaserSection(props: { items: HomeTeaserItem[] }) {
                 href={`/journal/${i.slug}`}
                 className="group rounded-2xl border border-white/10 bg-white/[0.02] p-5 hover:bg-white/[0.04] transition"
               >
-                <p className="text-xs uppercase tracking-[0.24em] text-white/50">
-                  {i.date ? i.date : i.tag ? i.tag : "Journal"}
-                </p>
+                <div className="flex flex-wrap items-center gap-2">
+                  {i.date ? (
+                    <span className="inline-flex rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-[11px] tracking-[0.14em] text-white/60">
+                      {i.date}
+                    </span>
+                  ) : null}
+                  {i.tag ? (
+                    <span className="inline-flex rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-[11px] tracking-[0.14em] text-white/60">
+                      {i.tag}
+                    </span>
+                  ) : null}
+                </div>
                 <h3 className="mt-3 text-base font-semibold text-white/85 group-hover:text-white transition">
                   {i.title}
                 </h3>
