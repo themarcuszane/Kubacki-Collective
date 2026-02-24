@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useMemo, useState } from 'react';
 import HeroOverlay from '@/components/HeroOverlay';
@@ -27,11 +28,6 @@ export default function Hero() {
   }, []);
 
   const activeImage = useMemo(() => heroImages[activeIndex], [activeIndex]);
-
-  const handleEnterClick = () => {
-    const nextSection = document.getElementById('home-intro');
-    nextSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
 
   return (
     <section
@@ -118,10 +114,10 @@ export default function Hero() {
         </Reveal>
 
         <Reveal variant="fadeUp" delay={0.4}>
-          <button
-            type="button"
-            onClick={handleEnterClick}
+          <Link
+            href="/collective"
             style={{
+              display: 'inline-block',
               marginTop: theme.spacing.xxl,
               padding: `${theme.spacing.sm} ${theme.spacing.xl}`,
               border: '1px solid color-mix(in srgb, var(--color-off-white) 66%, transparent 34%)',
@@ -148,7 +144,7 @@ export default function Hero() {
             }}
           >
             Enter the Collective
-          </button>
+          </Link>
         </Reveal>
       </div>
     </section>
