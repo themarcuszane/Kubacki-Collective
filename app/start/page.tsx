@@ -1,30 +1,20 @@
-import fs from "fs";
-import path from "path";
 import Image from "next/image";
 
-/*
-  SERVER SIDE: Read all files inside /public/collective
-*/
-function getCollectiveImages(): string[] {
-  const imagesDirectory = path.join(process.cwd(), "public", "collective");
-
-  const files = fs.readdirSync(imagesDirectory);
-
-  const validExtensions = [".jpg", ".jpeg", ".png", ".webp"];
-
-  return files
-    .filter((file) =>
-      validExtensions.includes(path.extname(file).toLowerCase())
-    )
-    .map((file) => `/collective/${file}`);
-}
+const IMAGES: string[] = [
+  "/images/collective/inventor.jpeg",
+  "/images/collective/mountain-view.jpg",
+  "/images/collective/paris-street-02.jpg",
+  "/images/collective/Paris1.jpeg",
+  // If/when these exist in public/images/collective, uncomment:
+  // "/images/collective/nyc-walk-01.jpg",
+  // "/images/collective/nyc-walk-02.jpg",
+  // "/images/collective/umbrella-portrait.jpg",
+];
 
 export default function StartPage() {
-  const images = getCollectiveImages();
-
   return (
     <main className="relative min-h-screen w-full overflow-hidden bg-black text-white">
-      <BackgroundRotator images={images} />
+      <BackgroundRotator images={IMAGES} />
 
       <div className="relative z-10 flex min-h-screen items-center justify-center px-6">
         <h1 className="text-center text-3xl md:text-6xl tracking-wide">
@@ -35,20 +25,17 @@ export default function StartPage() {
   );
 }
 
-/*
-  CLIENT COMPONENT FOR ROTATION
-*/
 function BackgroundRotator({ images }: { images: string[] }) {
   "use client";
 
-  const { useState, useEffect } = require("react");
+  const { useEffect, useState } = require("react");
 
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
     if (!images || images.length <= 1) return;
 
-    // Faster rotation than homepage
+    // Faster than homepage rotation
     const interval = setInterval(() => {
       setIndex((prev: number) => (prev + 1) % images.length);
     }, 1200);
