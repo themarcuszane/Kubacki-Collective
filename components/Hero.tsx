@@ -115,7 +115,7 @@ export default function Hero() {
 
         <Reveal variant="fadeUp" delay={0.4}>
           <Link
-            href="/start"
+            href="/collective"
             style={{
               display: 'inline-block',
               marginTop: theme.spacing.xxl,
