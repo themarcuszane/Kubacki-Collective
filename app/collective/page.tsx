@@ -21,7 +21,7 @@ export default function CollectivePage() {
 
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % IMAGES.length);
-    }, 1200);
+    }, 2000);
 
     return () => clearInterval(interval);
   }, []);
