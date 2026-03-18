@@ -8,7 +8,7 @@ const withMDX = require("@next/mdx")({
 const nextConfig = {
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   images: {
-    // local /public images are fine; no remotePatterns needed yet
+    unoptimized: true,
   },
 };
 

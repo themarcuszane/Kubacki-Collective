@@ -22,9 +22,9 @@ export default defineConfig({
     { name: "webkit", use: { ...devices["Desktop Safari"] } },
   ],
   webServer: {
-    command: "npm run dev -- --port 3000",
+    command: `npm run dev -- --port ${PORT}`,
     port: PORT,
-    reuseExistingServer: !process.env.CI,
+    reuseExistingServer: false,
     timeout: 120_000,
   },
 });

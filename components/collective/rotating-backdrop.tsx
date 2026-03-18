@@ -50,7 +50,6 @@ export function RotatingBackdrop({
       if (intervalRef.current) window.clearInterval(intervalRef.current);
       if (fadeRef.current) window.clearTimeout(fadeRef.current);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [srcs.length, intervalMs, fadeMs, idx]);
 
   if (!srcs.length) return null;

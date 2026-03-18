@@ -1,37 +1,17 @@
 import type { Metadata } from 'next';
-import Footer from '@/components/Footer';
-import Header from '@/components/Header';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Kubacki Collective',
-  description: 'A lifestyle creative movement.'
+  title: 'CareerOS',
+  description: 'Your AI job search command center.'
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>
-        <div className="fixed inset-0 -z-10">
-          <div className="absolute inset-0 bg-black" />
-          <div
-            className="absolute inset-0 opacity-[0.06] bg-cover bg-center"
-            style={{ backgroundImage: "url('/images/collective/texture.jpg')" }}
-          />
-        </div>
-        <div className="u-grain" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-          <Header />
-          <main
-            style={{
-              flex: 1,
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 'clamp(4rem, 8vw, 7rem)'
-            }}
-          >
-            {children}
-          </main>
-          <Footer />
+      <body className="min-h-screen bg-slate-950 text-slate-100 antialiased">
+        <div className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.16),_transparent_38%),linear-gradient(180deg,_#020617_0%,_#0f172a_100%)]">
+          {children}
         </div>
       </body>
     </html>

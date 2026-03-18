@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { getAllSlugs, getContentBySlug, type FrontmatterBase } from "@/lib/content";
 import { MDXShell } from "@/components/mdx/mdx-shell";
 import { mdxComponents } from "@/components/mdx/mdx-components";
+import type { MDXComponents } from "mdx/types";
 import { MDXRemote } from "next-mdx-remote/rsc";
 
 export function generateStaticParams() {
@@ -38,7 +39,7 @@ export default async function JournalPostPage({ params }: { params: Promise<{ sl
         </div>
       }
     >
-      <MDXRemote source={item.content} components={mdxComponents as any} />
+      <MDXRemote source={item.content} components={mdxComponents as MDXComponents} />
     </MDXShell>
   );
 }
