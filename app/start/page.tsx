@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
 const IMAGES: string[] = [
@@ -26,10 +29,6 @@ export default function StartPage() {
 }
 
 function BackgroundRotator({ images }: { images: string[] }) {
-  "use client";
-
-  const { useEffect, useState } = require("react");
-
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
