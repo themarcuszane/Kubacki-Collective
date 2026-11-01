@@ -1,13 +1,15 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("Smoke", () => {
-  test("landing page loads with primary auth entry points", async ({ page }) => {
+  test("landing page shows the collective and company branding", async ({ page }) => {
     await page.goto("/", { waitUntil: "domcontentloaded" });
     await expect(page.locator("body")).toBeVisible();
 
-    await expect(page.getByRole("heading", { name: "Your next move. In focus." })).toBeVisible();
-    await expect(page.getByRole("link", { name: "Get Started" }).first()).toBeVisible();
-    await expect(page.getByRole("link", { name: "Sign In" }).first()).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Kubacki Collective", exact: true })).toBeVisible();
+    await expect(page.getByRole("banner")).toContainText("TeamDryBox LLC");
+    await expect(page.getByRole("link", { name: "Enter the Collective" })).toBeVisible();
+    await expect(page.getByRole("contentinfo")).toContainText("TeamDryBox LLC");
+    await expect(page.locator("body")).not.toContainText("CareerOS");
   });
 
   test("auth routes load", async ({ page }) => {

@@ -34,7 +34,7 @@ export default function Hero() {
       aria-label="Kubacki Hero"
       style={{
         position: 'relative',
-        minHeight: '100vh',
+        minHeight: 'calc(100svh - 5.4rem)',
         overflow: 'hidden',
         display: 'grid',
         placeItems: 'center',
@@ -76,7 +76,7 @@ export default function Hero() {
         <Reveal variant="slowReveal">
           <h1
             style={{
-              fontSize: theme.typography.display,
+              fontSize: 'clamp(2rem, 8vw, 7rem)',
               lineHeight: 0.9,
               letterSpacing: '0.1em',
               textTransform: 'uppercase'
@@ -95,7 +95,7 @@ export default function Hero() {
               textTransform: 'uppercase'
             }}
           >
-            A lifestyle creative movement.
+            A lifestyle creative movement by TeamDryBox LLC.
           </p>
         </Reveal>
 

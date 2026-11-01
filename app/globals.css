@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 :root {
+  --color-soft-black: #12100f;
+  --color-charcoal: #1d1a18;
+  --color-off-white: #f2eee6;
+  --color-brass: #8f7a52;
   --background: 222 47% 11%;
   --foreground: 210 40% 98%;
   --card: 222 47% 12%;

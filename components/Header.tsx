@@ -48,7 +48,7 @@ export default function Header() {
           style={{
             display: 'inline-flex',
             alignItems: 'center',
-            gap: theme.spacing.md,
+            gap: '0.75rem',
             borderBottom: 'none',
             fontSize: theme.typography.small,
             letterSpacing: '0.08em',
@@ -56,7 +56,10 @@ export default function Header() {
           }}
         >
           <Mark size={24} title="Kubacki mark" />
-          <span>Kubacki</span>
+          <span className="flex flex-col gap-1">
+            <span>Kubacki Collective</span>
+            <span className="text-[9px] tracking-[0.14em] text-white/50">By TeamDryBox LLC</span>
+          </span>
         </Link>
 
         {/* Navigation intentionally disabled */}
