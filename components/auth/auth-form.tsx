@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+import { SubmitButton } from '@/components/submit-button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -12,6 +12,7 @@ type AuthFormProps = {
   footerText: string;
   footerHref: string;
   footerLinkLabel: string;
+  mode?: 'sign-in' | 'sign-up';
 };
 
 export function AuthForm({
@@ -21,7 +22,8 @@ export function AuthForm({
   submitLabel,
   footerText,
   footerHref,
-  footerLinkLabel
+  footerLinkLabel,
+  mode = 'sign-in'
 }: AuthFormProps) {
   return (
     <Card className="w-full max-w-md border-slate-800/80 bg-slate-900/80 shadow-2xl shadow-slate-950/30">
@@ -41,17 +43,17 @@ export function AuthForm({
               id="password"
               name="password"
               type="password"
-              autoComplete="current-password"
+              autoComplete={mode === 'sign-up' ? 'new-password' : 'current-password'}
               required
               minLength={6}
               placeholder="At least 6 characters"
             />
           </div>
-          <Button type="submit" className="w-full">
+          <SubmitButton pendingLabel={mode === 'sign-up' ? 'Creating account…' : 'Signing in…'} className="w-full">
             {submitLabel}
-          </Button>
+          </SubmitButton>
         </form>
-        <p className="mt-5 text-sm text-slate-400">
+        <p className="mt-6 border-t border-slate-800 pt-5 text-center text-sm leading-6 text-slate-400">
           {footerText}{' '}
           <Link href={footerHref} className="border-none font-medium text-sky-300 hover:text-sky-200">
             {footerLinkLabel}

@@ -1,7 +1,6 @@
 import { saveProfile } from '@/app/actions/profile';
 import { AppPageShell } from '@/components/app-page-shell';
-import { FormStatus } from '@/components/form-status';
-import { Button } from '@/components/ui/button';
+import { SubmitButton } from '@/components/submit-button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -21,19 +20,19 @@ export default async function OnboardingPage({ searchParams }: { searchParams: S
         title="Set up your profile"
         description={
           profileComplete
-            ? 'Update the saved context CareerOS uses across your dashboard, opportunities, and pipeline.'
-            : 'Capture the search preferences that CareerOS should keep in view as you move through opportunities and pipeline work.'
+            ? 'Refine your preferences as your search evolves.'
+            : 'Start with the essentials. What does your next role look like?'
         }
         className="mx-auto w-full max-w-4xl"
       >
 
       <Card className="border-slate-800/80 bg-slate-900/80">
         <CardHeader>
-          <CardTitle>Onboarding</CardTitle>
-          <CardDescription>Tell CareerOS what you are targeting so your workspace starts with the right context.</CardDescription>
+          <CardTitle>Your search preferences</CardTitle>
+          <CardDescription>Full name and target role are required. Everything else can come later.</CardDescription>
         </CardHeader>
         <CardContent>
-          {params.error ? <p className="mb-5 text-sm text-rose-300">{params.error}</p> : null}
+          {params.error ? <p role="alert" className="mb-5 text-sm text-rose-300">{params.error}</p> : null}
           <form action={saveProfile} className="grid gap-6">
             <div className="grid gap-6 md:grid-cols-2">
               <div className="space-y-2">
@@ -124,9 +123,7 @@ export default async function OnboardingPage({ searchParams }: { searchParams: S
             </div>
 
             <div className="flex justify-end">
-              <Button type="submit">
-                <FormStatus label={profileComplete ? 'Updating...' : 'Saving...'} />
-              </Button>
+              <SubmitButton pendingLabel={profileComplete ? 'Updating…' : 'Saving…'}>Save profile</SubmitButton>
             </div>
           </form>
         </CardContent>

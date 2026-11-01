@@ -23,9 +23,10 @@ export default async function SignUpPage({ searchParams }: { searchParams: Searc
       description="Start with a clean workspace for your job search, then complete onboarding to set your preferences."
     >
       <div className="space-y-4">
-        {params.error ? <p className="text-sm text-rose-300">{params.error}</p> : null}
-        {params.message ? <p className="text-sm text-emerald-300">{params.message}</p> : null}
+        {params.error ? <p role="alert" className="rounded-lg border border-rose-400/20 bg-rose-400/5 p-3 text-sm leading-6 text-rose-200">{params.error}</p> : null}
+        {params.message ? <p role="status" className="rounded-lg border border-emerald-400/20 bg-emerald-400/5 p-3 text-sm leading-6 text-emerald-200">{params.message}</p> : null}
         <AuthForm
+          mode="sign-up"
           title="Get started"
           description="Create an account with email and password."
           action={signUp}

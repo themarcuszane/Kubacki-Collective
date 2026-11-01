@@ -17,12 +17,13 @@ export default async function AppLayout({
   }
 
   return (
-    <div className="mx-auto flex min-h-screen w-full max-w-7xl flex-col px-5 py-5 sm:px-7 sm:py-7 lg:px-10">
-      <div className="grid flex-1 gap-5 lg:grid-cols-[272px_minmax(0,1fr)]">
+    <div className="mx-auto min-h-screen w-full max-w-[1440px] p-4 sm:p-6 lg:p-8">
+      <a href="#main-content" className="skip-link">Skip to content</a>
+      <div className="grid gap-5 lg:min-h-[calc(100vh-4rem)] lg:grid-cols-[224px_minmax(0,1fr)] lg:gap-8">
         <AppSidebar />
-        <div className="min-w-0 rounded-[28px] border border-slate-800/80 bg-slate-950/45 p-5 backdrop-blur-sm sm:p-6">
+        <main id="main-content" tabIndex={-1} className="min-w-0 rounded-2xl border border-slate-800/80 bg-slate-900/20 p-5 sm:p-7 lg:p-8">
           {children}
-        </div>
+        </main>
       </div>
     </div>
   );

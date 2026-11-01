@@ -16,7 +16,7 @@ export default async function OpportunitiesPage() {
     <AppPageShell
         eyebrow="Opportunities"
         title="Opportunity tracker"
-        description="A clean home for sourced roles, applications, and the next wave of opportunity records."
+        description="A home for the roles that deserve your attention."
         action={
           <Link href="/dashboard" className={buttonClassName({ variant: 'secondary' })}>
             Back to dashboard
@@ -26,12 +26,12 @@ export default async function OpportunitiesPage() {
       >
       <div className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
         <AppShellCard
-          title="Empty state"
-          description="The structure is ready for the first opportunity table and detail views."
+          title="Your next opportunity starts here"
+          description="Opportunity tracking is coming next."
         >
           <div className="rounded-2xl border border-dashed border-slate-800 bg-slate-950/40 p-6">
             <p className="text-sm leading-7 text-slate-400">
-              No opportunities yet. This page will eventually hold tracked roles, stage, company, compensation, and notes.
+              Soon you’ll be able to keep roles, companies, and application details together. In the meantime, refine your search preferences so you’re ready for the right fit.
             </p>
             <div className="mt-5 grid gap-2 text-sm text-slate-500">
               <div className="flex items-center justify-between rounded-xl border border-slate-800/80 bg-slate-950/60 px-4 py-3">
@@ -47,8 +47,8 @@ export default async function OpportunitiesPage() {
         </AppShellCard>
 
         <AppShellCard
-          title="Planned fields"
-          description="A small, v1-friendly foundation for future records."
+          title="A little more clarity"
+          description="The details you’ll be able to keep in view."
         >
           <ul className="space-y-3 text-sm text-slate-300">
             <li className="rounded-xl border border-slate-800 bg-slate-950/50 px-4 py-3">Role title</li>

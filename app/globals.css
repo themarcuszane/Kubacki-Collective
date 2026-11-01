@@ -41,6 +41,7 @@ body {
 
 body {
   min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 ::selection {
@@ -54,6 +55,51 @@ a {
   transition: color 180ms ease, opacity 180ms ease;
 }
 
-a:hover {
-  opacity: 0.92;
+:focus-visible {
+  outline: 2px solid #7dd3fc;
+  outline-offset: 4px;
+}
+
+.site-container {
+  width: min(100% - 3rem, 1160px);
+  margin-inline: auto;
+}
+
+.eyebrow {
+  color: #94a3b8;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  transform: translateY(-200%);
+  border-radius: 0.5rem;
+  background: #7dd3fc;
+  padding: 0.75rem 1rem;
+  color: #020617;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+@media (min-width: 640px) {
+  .site-container {
+    width: min(100% - 5rem, 1160px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

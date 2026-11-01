@@ -5,7 +5,7 @@ test.describe("Smoke", () => {
     await page.goto("/", { waitUntil: "domcontentloaded" });
     await expect(page.locator("body")).toBeVisible();
 
-    await expect(page.getByRole("heading", { name: "Your AI Job Search Command Center" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Your next move. In focus." })).toBeVisible();
     await expect(page.getByRole("link", { name: "Get Started" }).first()).toBeVisible();
     await expect(page.getByRole("link", { name: "Sign In" }).first()).toBeVisible();
   });

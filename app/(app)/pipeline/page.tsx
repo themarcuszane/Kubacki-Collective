@@ -15,14 +15,14 @@ export default async function PipelinePage() {
   return (
     <AppPageShell
         eyebrow="Pipeline"
-        title="Pipeline skeleton"
-        description="A quiet, stage-based layout that gives CareerOS a clear next step once opportunities are added."
+        title="Your search in motion"
+        description="From the first interesting role to the final decision."
         contentClassName="space-y-8"
       >
 
       <AppShellCard
-        title="Initial stage map"
-        description="Simple enough for v1, structured enough to grow into a real workflow."
+        title="Every step, in view"
+        description="Pipeline tracking is coming next. Here’s how your search will take shape."
       >
         <div className="grid gap-4 xl:grid-cols-4">
           {columns.map((column) => (
@@ -32,7 +32,7 @@ export default async function PipelinePage() {
                 <span className="rounded-full bg-slate-900 px-2.5 py-1 text-xs text-slate-500">0</span>
               </div>
               <div className="mt-4 rounded-2xl border border-dashed border-slate-800 bg-slate-950/40 px-4 py-8 text-center text-sm text-slate-500">
-                No roles in this stage yet
+                Coming next
               </div>
             </div>
           ))}

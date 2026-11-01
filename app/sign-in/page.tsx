@@ -23,8 +23,8 @@ export default async function SignInPage({ searchParams }: { searchParams: Searc
       description="Pick up where you left off and keep your opportunities, pipeline, and settings in one place."
     >
       <div className="space-y-4">
-        {params.error ? <p className="text-sm text-rose-300">{params.error}</p> : null}
-        {params.message ? <p className="text-sm text-emerald-300">{params.message}</p> : null}
+        {params.error ? <p role="alert" className="rounded-lg border border-rose-400/20 bg-rose-400/5 p-3 text-sm leading-6 text-rose-200">{params.error}</p> : null}
+        {params.message ? <p role="status" className="rounded-lg border border-emerald-400/20 bg-emerald-400/5 p-3 text-sm leading-6 text-emerald-200">{params.message}</p> : null}
         <AuthForm
           title="Welcome back"
           description="Use your email and password to access CareerOS."
