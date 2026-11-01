@@ -5,7 +5,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 export function PublicSiteShell({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname();
+  const pathname = usePathname().replace(/\/+$/, '') || '/';
   const isPublicSite = pathname === '/' || pathname === '/collective' || pathname === '/start' || pathname === '/chapters' || pathname.startsWith('/chapters/') || pathname === '/journal' || pathname.startsWith('/journal/');
 
   if (!isPublicSite) return children;
