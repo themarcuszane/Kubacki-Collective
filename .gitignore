@@ -1,6 +1,8 @@
 node_modules
 .next
 out
+out.manifest.json
+.collective-export-*/
 .env*
 !.env.example
 .DS_Store

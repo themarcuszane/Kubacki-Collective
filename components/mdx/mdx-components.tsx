@@ -14,7 +14,7 @@ export const mdxComponents = {
         <Link
           href={href}
           className={cn(
-            "text-white/85 underline underline-offset-4 decoration-white/30 hover:decoration-white/70 transition"
+            "text-[#d7c19c] underline underline-offset-4 decoration-[#c2a77a]/40 hover:decoration-[#c2a77a] transition-colors"
           )}
         >
           {props.children}
@@ -27,34 +27,34 @@ export const mdxComponents = {
         target={props.target ?? "_blank"}
         rel={props.rel ?? "noreferrer noopener"}
         className={cn(
-          "text-white/85 underline underline-offset-4 decoration-white/30 hover:decoration-white/70 transition"
+          "text-[#d7c19c] underline underline-offset-4 decoration-[#c2a77a]/40 hover:decoration-[#c2a77a] transition-colors"
         )}
       />
     );
   },
   h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h1 {...props} className="text-3xl md:text-5xl font-semibold tracking-tight text-white" />
+    <h1 {...props} className="display-serif text-3xl md:text-5xl leading-tight text-[#f2eee6]" />
   ),
   h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h2 {...props} className="mt-10 text-2xl md:text-3xl font-semibold tracking-tight text-white" />
+    <h2 {...props} className="display-serif mt-10 text-2xl md:text-3xl leading-tight text-[#f2eee6]" />
   ),
   h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h3 {...props} className="mt-8 text-xl md:text-2xl font-semibold tracking-tight text-white" />
+    <h3 {...props} className="display-serif mt-8 text-xl md:text-2xl leading-tight text-[#f2eee6]" />
   ),
   p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
-    <p {...props} className="mt-4 text-base leading-relaxed text-white/75" />
+    <p {...props} className="mt-4 text-base leading-8 text-white/70" />
   ),
   ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
-    <ul {...props} className="mt-4 list-disc pl-6 text-white/75" />
+    <ul {...props} className="mt-4 list-disc pl-6 text-white/70 marker:text-[#c2a77a]" />
   ),
   ol: (props: React.HTMLAttributes<HTMLOListElement>) => (
-    <ol {...props} className="mt-4 list-decimal pl-6 text-white/75" />
+    <ol {...props} className="mt-4 list-decimal pl-6 text-white/70 marker:text-[#c2a77a]" />
   ),
   li: (props: React.HTMLAttributes<HTMLLIElement>) => <li {...props} className="mt-2" />,
   blockquote: (props: React.HTMLAttributes<HTMLQuoteElement>) => (
     <blockquote
       {...props}
-      className="mt-6 rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-white/75"
+      className="display-serif mt-8 border-l border-[#c2a77a] pl-5 text-xl leading-relaxed text-[#d7c19c]"
     />
   ),
   hr: () => <hr className="my-10 border-white/10" />,

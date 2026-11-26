@@ -1,30 +1,33 @@
 # Testing Kubacki Collective
 
-Use Node 24 and the committed npm lockfile. The GitHub job pins Ubuntu 24.04 because the locked Playwright 1.58 browser builds do not support Ubuntu 26.04. It runs with read-only repository permissions and maintained GitHub Actions pinned to commit SHAs.
+Use Node.js 24 and the committed npm lockfile. CI pins Ubuntu 24.04 because the locked Playwright 1.58 browser builds do not support Ubuntu 26.04. The GitHub job uses read-only repository permissions and pinned GitHub Actions. CI configuration is in `.github/workflows/`.
 
 ## Public collective site
 
 ```sh
 npm ci
 npx playwright install --with-deps chromium webkit
-npm run test:all
+npm test
+npm run build:public
+npm run test:e2e
 ```
 
-`test:all` runs unit tests, builds the application, then runs Chromium/WebKit smoke tests against `next start`. Alternatively, run `npm test`, `npm run build`, and `npm run test:e2e` individually. `npm run test:e2e:ui` also requires a completed build. No Supabase project, API key, database, or production credential is required for the public suite.
+The public release build writes `out/` plus `out.manifest.json`; E2E should exercise that exported artifact through the Node static preview (`npm run preview:public`). This matches the production delivery shape on S3/CloudFront. For a quick local check, `npm run preview:public` binds to `127.0.0.1:3197` by default; `PORT` can override it.
 
-Coverage includes the collective/company branding, public pages with and without trailing slashes, chapter/journal links and rendered MDX, and genuine 404 responses. Matcher regression tests prove that session handling excludes public routes/assets and still includes CareerOS routes. The protected layout and actions continue validating users.
+Coverage includes collective and company branding, the public pages with and without trailing slashes, chapter/journal navigation and rendered MDX, real 404 responses, carousel display and rotation, and image integrity. Matcher regression tests cover the separate CareerOS scaffold behavior. No Supabase project, API key, database, or production credential is needed for public tests.
 
-The production-build smoke tests exercise the repository's public pages. This CI change does not create an S3 export/upload pipeline or deploy the application; the release-boundary work in security finding SEC-06 remains open.
+`npm run build:public` uses an explicit source allowlist. It records source commit and dirty state, rejects forbidden scaffold output and the removed inventor image reference, checks required branding, and hashes every exported file. A build from dirty source is useful for development but not a release candidate; require `source_dirty: false` for release.
 
 ## Separate CareerOS scaffold
 
-The original auth/anonymous-redirect tests remain in `tests/e2e/careeros.spec.ts`. To run them, export `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` for a dedicated test project, then:
+The original auth/anonymous-redirect tests remain under `tests/e2e/careeros.spec.ts`. They use the separate `playwright.careeros.config.ts` and require `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` for a dedicated test project:
 
 ```sh
-npm run build
 npm run test:e2e:careeros
 ```
 
-The explicit CareerOS configuration exits with a clear error if either variable is absent. These tests are not included in public-site CI and do not validate authenticated flows or live database isolation. Never use production credentials merely to make public-site tests pass.
+Do not use production credentials for these checks. They do not validate the public static export, authenticated user flows, or live database isolation. CareerOS routes and runtime files are intentionally not included in `build:public`.
 
-Session refresh is scoped to `/sign-in`, `/sign-up`, `/auth`, `/dashboard`, `/onboarding`, `/opportunities`, `/pipeline`, and `/settings`, including nested paths. Add the correct matcher and regression coverage if new authenticated routes are introduced. Public requests no longer initialize or contact Supabase.
+## Live production smoke check
+
+After a release is live, run `npm run test:e2e:release` to exercise the same public browser suite against `https://kubackicollective.com`. This config does not start a local server; the checks only load pages and assets and click carousel/navigation controls. It does not change production data or AWS settings. Output is written under ignored `test-results/live/`. Review failures against the deployed commit and current production state before treating them as a code regression.

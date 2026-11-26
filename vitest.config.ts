@@ -11,7 +11,7 @@ export default defineConfig({
     environment: "jsdom",
     globals: true,
     setupFiles: ["./vitest.setup.ts"],
-    include: ["**/*.test.{ts,tsx}"],
-    exclude: ["node_modules", "dist", ".next", "playwright-report"],
+    include: ["tests/**/*.test.{ts,tsx}"],
+    exclude: ["node_modules", "dist", ".next", "playwright-report", ".collective-export-*/**"],
   },
 });

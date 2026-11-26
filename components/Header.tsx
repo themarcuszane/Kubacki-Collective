@@ -1,69 +1,44 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { useRef, useState } from 'react';
 import Mark from '@/components/Mark';
-import { theme } from '@/lib/theme';
+
+const navigation = [
+  { href: '/collective', label: 'Collective' },
+  { href: '/chapters', label: 'Chapters' },
+  { href: '/journal', label: 'Journal' }
+];
 
 export default function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 18);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  const pathname = usePathname().replace(/\/+$/, '') || '/';
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuButton = useRef<HTMLButtonElement>(null);
 
   return (
-    <header
-      style={{
-        position: 'sticky',
-        top: 0,
-        zIndex: 50,
-        borderBottom: isScrolled
-          ? '1px solid color-mix(in srgb, var(--color-off-white) 10%, transparent 90%)'
-          : '1px solid transparent',
-        backdropFilter: isScrolled ? 'blur(14px)' : 'none',
-        background: isScrolled
-          ? 'color-mix(in srgb, var(--color-soft-black) 86%, transparent 14%)'
-          : 'transparent',
-        transition: 'background 320ms ease, border-color 320ms ease, backdrop-filter 320ms ease'
-      }}
-    >
-      <div
-        style={{
-          maxWidth: theme.containers.wide,
-          margin: '0 auto',
-          padding: `0 ${theme.sectionPadding.x}`,
-          height: isScrolled ? '4.4rem' : '5.4rem',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          transition: 'height 320ms ease'
-        }}
-      >
-        <Link
-          href="/"
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '0.75rem',
-            borderBottom: 'none',
-            fontSize: theme.typography.small,
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase'
-          }}
-        >
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#12100f]/95 backdrop-blur-md" onKeyDown={event => {
+      if (event.key === 'Escape' && menuOpen) {
+        setMenuOpen(false);
+        menuButton.current?.focus();
+      }
+    }}>
+      <div className="mx-auto flex min-h-20 max-w-7xl items-center justify-between gap-4 px-6 md:px-10">
+        <Link href="/" onClick={() => setMenuOpen(false)} className="inline-flex items-center gap-3 text-xs uppercase tracking-[0.1em] md:text-sm">
           <Mark size={24} title="Kubacki mark" />
-          <span className="flex flex-col gap-1">
-            <span>Kubacki Collective</span>
-            <span className="text-[9px] tracking-[0.14em] text-white/50">By TeamDryBox LLC</span>
-          </span>
+          <span className="flex flex-col gap-1.5"><span>Kubacki Collective</span><span className="text-[9px] tracking-[0.14em] text-white/55">By TeamDryBox LLC</span></span>
         </Link>
-
-        {/* Navigation intentionally disabled */}
+        <nav aria-label="Main navigation" className="hidden items-center gap-8 md:flex">
+          {navigation.map(item => {
+            const current = pathname === item.href || pathname.startsWith(item.href + '/');
+            return <Link key={item.href} href={item.href} aria-current={current ? 'page' : undefined} className={`inline-flex min-h-11 items-center text-xs tracking-wide transition-colors ${current ? 'text-[#d7c19c]' : 'text-white/65 hover:text-[#f2eee6]'}`}>{item.label}</Link>;
+          })}
+        </nav>
+        <button ref={menuButton} type="button" aria-label={menuOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={menuOpen} aria-controls="mobile-navigation" onClick={() => setMenuOpen(open => !open)} className="min-h-11 min-w-14 border border-white/20 px-3 text-xs text-[#f2eee6] md:hidden">{menuOpen ? 'Close' : 'Menu'}</button>
       </div>
+      {menuOpen ? <nav id="mobile-navigation" aria-label="Mobile navigation" className="border-t border-white/10 px-6 py-3 md:hidden">
+        {navigation.map(item => <Link key={item.href} href={item.href} onClick={() => setMenuOpen(false)} aria-current={pathname === item.href || pathname.startsWith(item.href + '/') ? 'page' : undefined} className="flex min-h-12 items-center justify-between border-b border-white/10 text-sm last:border-0">{item.label}<span aria-hidden="true">↗</span></Link>)}
+      </nav> : null}
     </header>
   );
 }

@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 
 const IMAGES: string[] = [
-  "/images/collective/inventor.jpeg",
   "/images/collective/mountain-view.jpg",
   "/images/collective/paris-street-02.jpg",
   "/images/collective/Paris1.jpeg",
@@ -16,11 +15,11 @@ const IMAGES: string[] = [
 
 export default function StartPage() {
   return (
-    <main className="relative min-h-screen w-full overflow-hidden bg-black text-white">
+    <main id="main-content" tabIndex={-1} className="relative min-h-screen w-full overflow-hidden bg-[#12100f] text-[#f2eee6]">
       <BackgroundRotator images={IMAGES} />
 
       <div className="relative z-10 flex min-h-screen items-center justify-center px-6">
-        <h1 className="text-center text-3xl md:text-6xl tracking-wide">
+        <h1 className="display-serif max-w-4xl text-center text-4xl leading-tight md:text-7xl">
           Kubacki Spring Clothing Collective Coming Soon
         </h1>
       </div>
@@ -30,17 +29,25 @@ export default function StartPage() {
 
 function BackgroundRotator({ images }: { images: string[] }) {
   const [index, setIndex] = useState(0);
+  const [canRotate, setCanRotate] = useState(false);
 
   useEffect(() => {
-    if (!images || images.length <= 1) return;
+    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updateMotionPreference = () => setCanRotate(!preference.matches);
+    updateMotionPreference();
+    preference.addEventListener("change", updateMotionPreference);
+    return () => preference.removeEventListener("change", updateMotionPreference);
+  }, []);
 
-    // Faster than homepage rotation
+  useEffect(() => {
+    if (!canRotate || images.length <= 1) return;
+
     const interval = setInterval(() => {
       setIndex((prev: number) => (prev + 1) % images.length);
-    }, 1200);
+    }, 6000);
 
     return () => clearInterval(interval);
-  }, [images]);
+  }, [canRotate, images]);
 
   return (
     <div className="absolute inset-0 z-0">

@@ -10,5 +10,5 @@ export function PublicSiteShell({ children }: { children: React.ReactNode }) {
 
   if (!isPublicSite) return children;
 
-  return <div className="min-h-screen bg-[#12100f] text-[#f2eee6]"><Header />{children}<Footer /></div>;
+  return <div className="public-site min-h-screen bg-[#12100f] text-[#f2eee6]"><a href="#main-content" className="skip-link">Skip to content</a><Header />{children}<Footer /></div>;
 }

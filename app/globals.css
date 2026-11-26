@@ -38,6 +38,27 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.display-serif {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  letter-spacing: -0.045em;
+}
+
+.public-site :focus-visible {
+  outline: 2px solid #c2a77a;
+  outline-offset: 4px;
+}
+
+.public-site .skip-link {
+  background: #c2a77a;
+  color: #12100f;
+}
+
+.public-site ::selection {
+  background: rgba(194, 167, 122, 0.35);
+  color: #f2eee6;
+}
+
 * {
   box-sizing: border-box;
   border-color: hsl(var(--border));

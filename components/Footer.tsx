@@ -4,7 +4,7 @@ import Mark from '@/components/Mark';
 export default function Footer() {
   return (
     <footer className="border-t border-white/10 bg-[#12100f]">
-      <div className="mx-auto w-full max-w-6xl px-6 py-10 md:px-8 md:py-12">
+      <div className="mx-auto w-full max-w-7xl px-6 py-10 md:px-10 md:py-12">
         <div className="flex flex-col justify-between gap-7 sm:flex-row sm:items-start">
           <div>
             <Link href="/" className="inline-flex items-center gap-3 text-sm uppercase tracking-[0.12em]"><Mark size={24} /><span>Kubacki Collective</span></Link>
