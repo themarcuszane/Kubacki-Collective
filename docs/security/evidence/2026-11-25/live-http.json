@@ -1,0 +1,908 @@
+{
+  "checked_at_utc": "2026-11-26T03:53:56.727122+00:00",
+  "public_routes": [
+    {
+      "url": "http://kubackicollective.com/",
+      "status": "301",
+      "error": "",
+      "headers": {
+        "server": "CloudFront",
+        "content-type": "text/html",
+        "content-length": "167",
+        "location": "https://kubackicollective.com/",
+        "x-cache": "Redirect from cloudfront"
+      },
+      "bytes": 167,
+      "sha256": "7f5007068d2b56ea9735e2490d60cff2e72cae312024ac1f6c91158eba47d05d",
+      "title": "301 Moved Permanently",
+      "collective_branding": false,
+      "company_branding": false,
+      "careeros": false
+    },
+    {
+      "url": "https://kubackicollective.com/",
+      "status": "200",
+      "error": "",
+      "headers": {
+        "content-type": "text/html",
+        "content-length": "14113",
+        "server": "AmazonS3",
+        "last-modified": "Sun, 01 Nov 2026 05:19:33 GMT",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "x-cache": "RefreshHit from cloudfront"
+      },
+      "bytes": 14113,
+      "sha256": "c1ff1aea1ef41d43ffeb6ae50e08a5edad800942178a5ab634886bd6a1b4359f",
+      "title": "Kubacki Collective | TeamDryBox LLC",
+      "collective_branding": true,
+      "company_branding": true,
+      "careeros": false
+    },
+    {
+      "url": "https://www.kubackicollective.com/",
+      "status": "000",
+      "error": "curl: (6) Could not resolve host: www.kubackicollective.com",
+      "headers": {},
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "title": null,
+      "collective_branding": false,
+      "company_branding": false,
+      "careeros": false
+    },
+    {
+      "url": "https://kubackicollective.com/collective",
+      "status": "302",
+      "error": "",
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "content-length": "313",
+        "location": "/collective/",
+        "server": "AmazonS3",
+        "x-cache": "Miss from cloudfront"
+      },
+      "bytes": 313,
+      "sha256": "61cd089fc6d6cfd0dd4176f72211d5628ee16c19df51b4bafa95cfc834c08db1",
+      "title": "302 Moved Temporarily",
+      "collective_branding": false,
+      "company_branding": false,
+      "careeros": false
+    },
+    {
+      "url": "https://kubackicollective.com/collective/",
+      "status": "200",
+      "error": "",
+      "headers": {
+        "content-type": "text/html",
+        "content-length": "12720",
+        "server": "AmazonS3",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "last-modified": "Sun, 01 Nov 2026 05:19:33 GMT",
+        "x-cache": "Miss from cloudfront"
+      },
+      "bytes": 12720,
+      "sha256": "99a145c2eb828e54f9a4bfdffd4ed1a006f080822b6dcff2769440ef237e3efe",
+      "title": "Kubacki Collective | TeamDryBox LLC",
+      "collective_branding": true,
+      "company_branding": true,
+      "careeros": false
+    },
+    {
+      "url": "https://kubackicollective.com/chapters/",
+      "status": "200",
+      "error": "",
+      "headers": {
+        "content-type": "text/html",
+        "content-length": "14234",
+        "server": "AmazonS3",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "last-modified": "Sun, 01 Nov 2026 05:19:33 GMT",
+        "x-cache": "Miss from cloudfront"
+      },
+      "bytes": 14234,
+      "sha256": "90a8fdf32d4e522d8ab87e21b598ec604e0de9cd795a080fbb4cec60498bf9c2",
+      "title": "Kubacki Collective | TeamDryBox LLC",
+      "collective_branding": true,
+      "company_branding": true,
+      "careeros": false
+    },
+    {
+      "url": "https://kubackicollective.com/journal/",
+      "status": "200",
+      "error": "",
+      "headers": {
+        "content-type": "text/html",
+        "content-length": "23087",
+        "server": "AmazonS3",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "last-modified": "Sun, 01 Nov 2026 05:19:33 GMT",
+        "x-cache": "Miss from cloudfront"
+      },
+      "bytes": 23087,
+      "sha256": "021e6177691a6e1d86dc5a6b76e6e2effe3c990d887dcb1d7c56d1b2c19682c5",
+      "title": "Kubacki Collective | TeamDryBox LLC",
+      "collective_branding": true,
+      "company_branding": true,
+      "careeros": false
+    },
+    {
+      "url": "https://kubackicollective.com/start/",
+      "status": "200",
+      "error": "",
+      "headers": {
+        "content-type": "text/html",
+        "content-length": "10635",
+        "server": "AmazonS3",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "last-modified": "Sun, 01 Nov 2026 05:19:34 GMT",
+        "x-cache": "Miss from cloudfront"
+      },
+      "bytes": 10635,
+      "sha256": "ab6fe13e3c38a1969ea3e51ac2c2aa72880f92d4d7f25c9a6d2242812687258a",
+      "title": "Kubacki Collective | TeamDryBox LLC",
+      "collective_branding": true,
+      "company_branding": true,
+      "careeros": false
+    },
+    {
+      "url": "https://kubackicollective.com/sign-in",
+      "status": "404",
+      "error": "",
+      "headers": {
+        "content-type": "text/html",
+        "content-length": "14113",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "last-modified": "Sun, 01 Nov 2026 05:19:33 GMT",
+        "server": "AmazonS3",
+        "x-cache": "Error from cloudfront"
+      },
+      "bytes": 14113,
+      "sha256": "c1ff1aea1ef41d43ffeb6ae50e08a5edad800942178a5ab634886bd6a1b4359f",
+      "title": "Kubacki Collective | TeamDryBox LLC",
+      "collective_branding": true,
+      "company_branding": true,
+      "careeros": false
+    },
+    {
+      "url": "https://kubackicollective.com/sign-in/",
+      "status": "404",
+      "error": "",
+      "headers": {
+        "content-type": "text/html",
+        "content-length": "14113",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "last-modified": "Sun, 01 Nov 2026 05:19:33 GMT",
+        "server": "AmazonS3",
+        "x-cache": "Error from cloudfront"
+      },
+      "bytes": 14113,
+      "sha256": "c1ff1aea1ef41d43ffeb6ae50e08a5edad800942178a5ab634886bd6a1b4359f",
+      "title": "Kubacki Collective | TeamDryBox LLC",
+      "collective_branding": true,
+      "company_branding": true,
+      "careeros": false
+    },
+    {
+      "url": "https://kubackicollective.com/sign-up/",
+      "status": "404",
+      "error": "",
+      "headers": {
+        "content-type": "text/html",
+        "content-length": "14113",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "last-modified": "Sun, 01 Nov 2026 05:19:33 GMT",
+        "server": "AmazonS3",
+        "x-cache": "Error from cloudfront"
+      },
+      "bytes": 14113,
+      "sha256": "c1ff1aea1ef41d43ffeb6ae50e08a5edad800942178a5ab634886bd6a1b4359f",
+      "title": "Kubacki Collective | TeamDryBox LLC",
+      "collective_branding": true,
+      "company_branding": true,
+      "careeros": false
+    },
+    {
+      "url": "https://kubackicollective.com/dashboard/",
+      "status": "404",
+      "error": "",
+      "headers": {
+        "content-type": "text/html",
+        "content-length": "14113",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "last-modified": "Sun, 01 Nov 2026 05:19:33 GMT",
+        "server": "AmazonS3",
+        "x-cache": "Error from cloudfront"
+      },
+      "bytes": 14113,
+      "sha256": "c1ff1aea1ef41d43ffeb6ae50e08a5edad800942178a5ab634886bd6a1b4359f",
+      "title": "Kubacki Collective | TeamDryBox LLC",
+      "collective_branding": true,
+      "company_branding": true,
+      "careeros": false
+    },
+    {
+      "url": "https://kubackicollective.com/auth/callback",
+      "status": "404",
+      "error": "",
+      "headers": {
+        "content-type": "text/html",
+        "content-length": "14113",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "last-modified": "Sun, 01 Nov 2026 05:19:33 GMT",
+        "server": "AmazonS3",
+        "x-cache": "Error from cloudfront"
+      },
+      "bytes": 14113,
+      "sha256": "c1ff1aea1ef41d43ffeb6ae50e08a5edad800942178a5ab634886bd6a1b4359f",
+      "title": "Kubacki Collective | TeamDryBox LLC",
+      "collective_branding": true,
+      "company_branding": true,
+      "careeros": false
+    },
+    {
+      "url": "https://kubackicollective.com/.env",
+      "status": "403",
+      "error": "",
+      "headers": {
+        "server": "CloudFront",
+        "content-type": "text/html",
+        "content-length": "919",
+        "x-cache": "Error from cloudfront"
+      },
+      "bytes": 919,
+      "sha256": "cfa091271f861ce5f6ea0535d708417f609411508668e8c9cac23a2e319b2082",
+      "title": null,
+      "collective_branding": false,
+      "company_branding": false,
+      "careeros": false
+    },
+    {
+      "url": "https://kubackicollective.com/.env.local",
+      "status": "404",
+      "error": "",
+      "headers": {
+        "content-type": "text/html",
+        "content-length": "14113",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "last-modified": "Sun, 01 Nov 2026 05:19:33 GMT",
+        "server": "AmazonS3",
+        "x-cache": "Error from cloudfront"
+      },
+      "bytes": 14113,
+      "sha256": "c1ff1aea1ef41d43ffeb6ae50e08a5edad800942178a5ab634886bd6a1b4359f",
+      "title": "Kubacki Collective | TeamDryBox LLC",
+      "collective_branding": true,
+      "company_branding": true,
+      "careeros": false
+    },
+    {
+      "url": "https://kubackicollective.com/.git/config",
+      "status": "404",
+      "error": "",
+      "headers": {
+        "content-type": "text/html",
+        "content-length": "14113",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "last-modified": "Sun, 01 Nov 2026 05:19:33 GMT",
+        "server": "AmazonS3",
+        "x-cache": "Error from cloudfront"
+      },
+      "bytes": 14113,
+      "sha256": "c1ff1aea1ef41d43ffeb6ae50e08a5edad800942178a5ab634886bd6a1b4359f",
+      "title": "Kubacki Collective | TeamDryBox LLC",
+      "collective_branding": true,
+      "company_branding": true,
+      "careeros": false
+    },
+    {
+      "url": "https://kubackicollective.com/package.json",
+      "status": "404",
+      "error": "",
+      "headers": {
+        "content-type": "text/html",
+        "content-length": "14113",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "last-modified": "Sun, 01 Nov 2026 05:19:33 GMT",
+        "server": "AmazonS3",
+        "x-cache": "Error from cloudfront"
+      },
+      "bytes": 14113,
+      "sha256": "c1ff1aea1ef41d43ffeb6ae50e08a5edad800942178a5ab634886bd6a1b4359f",
+      "title": "Kubacki Collective | TeamDryBox LLC",
+      "collective_branding": true,
+      "company_branding": true,
+      "careeros": false
+    },
+    {
+      "url": "https://kubackicollective.com/package-lock.json",
+      "status": "404",
+      "error": "",
+      "headers": {
+        "content-type": "text/html",
+        "content-length": "14113",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "last-modified": "Sun, 01 Nov 2026 05:19:33 GMT",
+        "server": "AmazonS3",
+        "x-cache": "Error from cloudfront"
+      },
+      "bytes": 14113,
+      "sha256": "c1ff1aea1ef41d43ffeb6ae50e08a5edad800942178a5ab634886bd6a1b4359f",
+      "title": "Kubacki Collective | TeamDryBox LLC",
+      "collective_branding": true,
+      "company_branding": true,
+      "careeros": false
+    },
+    {
+      "url": "https://kubackicollective.com/playwright-report/index.html",
+      "status": "404",
+      "error": "",
+      "headers": {
+        "content-type": "text/html",
+        "content-length": "14113",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "last-modified": "Sun, 01 Nov 2026 05:19:33 GMT",
+        "server": "AmazonS3",
+        "x-cache": "Error from cloudfront"
+      },
+      "bytes": 14113,
+      "sha256": "c1ff1aea1ef41d43ffeb6ae50e08a5edad800942178a5ab634886bd6a1b4359f",
+      "title": "Kubacki Collective | TeamDryBox LLC",
+      "collective_branding": true,
+      "company_branding": true,
+      "careeros": false
+    },
+    {
+      "url": "https://kubackicollective.com/test-results/.last-run.json",
+      "status": "404",
+      "error": "",
+      "headers": {
+        "content-type": "text/html",
+        "content-length": "14113",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "last-modified": "Sun, 01 Nov 2026 05:19:33 GMT",
+        "server": "AmazonS3",
+        "x-cache": "Error from cloudfront"
+      },
+      "bytes": 14113,
+      "sha256": "c1ff1aea1ef41d43ffeb6ae50e08a5edad800942178a5ab634886bd6a1b4359f",
+      "title": "Kubacki Collective | TeamDryBox LLC",
+      "collective_branding": true,
+      "company_branding": true,
+      "careeros": false
+    },
+    {
+      "url": "https://kubackicollective.com/security-review-nonexistent-20261125",
+      "status": "404",
+      "error": "",
+      "headers": {
+        "content-type": "text/html",
+        "content-length": "14113",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "last-modified": "Sun, 01 Nov 2026 05:19:33 GMT",
+        "server": "AmazonS3",
+        "x-cache": "Error from cloudfront"
+      },
+      "bytes": 14113,
+      "sha256": "c1ff1aea1ef41d43ffeb6ae50e08a5edad800942178a5ab634886bd6a1b4359f",
+      "title": "Kubacki Collective | TeamDryBox LLC",
+      "collective_branding": true,
+      "company_branding": true,
+      "careeros": false
+    },
+    {
+      "url": "https://kubackicollective.com/.well-known/security.txt",
+      "status": "404",
+      "error": "",
+      "headers": {
+        "content-type": "text/html",
+        "content-length": "14113",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "last-modified": "Sun, 01 Nov 2026 05:19:33 GMT",
+        "server": "AmazonS3",
+        "x-cache": "Error from cloudfront"
+      },
+      "bytes": 14113,
+      "sha256": "c1ff1aea1ef41d43ffeb6ae50e08a5edad800942178a5ab634886bd6a1b4359f",
+      "title": "Kubacki Collective | TeamDryBox LLC",
+      "collective_branding": true,
+      "company_branding": true,
+      "careeros": false
+    },
+    {
+      "url": "https://kubackicollective.com/robots.txt",
+      "status": "404",
+      "error": "",
+      "headers": {
+        "content-type": "text/html",
+        "content-length": "14113",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "last-modified": "Sun, 01 Nov 2026 05:19:33 GMT",
+        "server": "AmazonS3",
+        "x-cache": "Error from cloudfront"
+      },
+      "bytes": 14113,
+      "sha256": "c1ff1aea1ef41d43ffeb6ae50e08a5edad800942178a5ab634886bd6a1b4359f",
+      "title": "Kubacki Collective | TeamDryBox LLC",
+      "collective_branding": true,
+      "company_branding": true,
+      "careeros": false
+    },
+    {
+      "url": "https://kubackicollective.com/sitemap.xml",
+      "status": "404",
+      "error": "",
+      "headers": {
+        "content-type": "text/html",
+        "content-length": "14113",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "last-modified": "Sun, 01 Nov 2026 05:19:33 GMT",
+        "server": "AmazonS3",
+        "x-cache": "Error from cloudfront"
+      },
+      "bytes": 14113,
+      "sha256": "c1ff1aea1ef41d43ffeb6ae50e08a5edad800942178a5ab634886bd6a1b4359f",
+      "title": "Kubacki Collective | TeamDryBox LLC",
+      "collective_branding": true,
+      "company_branding": true,
+      "careeros": false
+    }
+  ],
+  "homepage_assets_and_adjacent_maps": [
+    {
+      "url": "https://kubackicollective.com/_next/static/chunks/2248ea59-88c8a07e622fa89d.js",
+      "status": "200",
+      "error": "",
+      "headers": {
+        "content-type": "text/javascript",
+        "content-length": "198485",
+        "server": "AmazonS3",
+        "cache-control": "public,max-age=31536000,immutable",
+        "last-modified": "Sun, 01 Nov 2026 05:19:22 GMT",
+        "x-cache": "Miss from cloudfront"
+      },
+      "bytes": 198485,
+      "sha256": "c0430ac508e445c2b47d87fd0c864c98efb90b487982b7b6566eeeeeab3336af",
+      "source_mapping_url": false
+    },
+    {
+      "url": "https://kubackicollective.com/_next/static/chunks/628-44c4ebce9f969df5.js",
+      "status": "200",
+      "error": "",
+      "headers": {
+        "content-type": "text/javascript",
+        "content-length": "188637",
+        "server": "AmazonS3",
+        "cache-control": "public,max-age=31536000,immutable",
+        "last-modified": "Sun, 01 Nov 2026 05:19:22 GMT",
+        "x-cache": "Miss from cloudfront"
+      },
+      "bytes": 188637,
+      "sha256": "e48c0c30b7fc33163c80bacbe3372d5f40c071d92dc5d8ee10bcc18ee4f20ce5",
+      "source_mapping_url": false
+    },
+    {
+      "url": "https://kubackicollective.com/_next/static/chunks/732-ae36296b137f98dc.js",
+      "status": "200",
+      "error": "",
+      "headers": {
+        "content-type": "text/javascript",
+        "content-length": "121080",
+        "server": "AmazonS3",
+        "cache-control": "public,max-age=31536000,immutable",
+        "last-modified": "Sun, 01 Nov 2026 05:19:22 GMT",
+        "x-cache": "Miss from cloudfront"
+      },
+      "bytes": 121080,
+      "sha256": "1cad88fcfc8724b656fbe7dc328e78b8fde460f919287276289af8885cefac05",
+      "source_mapping_url": false
+    },
+    {
+      "url": "https://kubackicollective.com/_next/static/chunks/807-3c852875da7574a4.js",
+      "status": "200",
+      "error": "",
+      "headers": {
+        "content-type": "text/javascript",
+        "content-length": "8715",
+        "server": "AmazonS3",
+        "cache-control": "public,max-age=31536000,immutable",
+        "last-modified": "Sun, 01 Nov 2026 05:19:22 GMT",
+        "x-cache": "Miss from cloudfront"
+      },
+      "bytes": 8715,
+      "sha256": "06701cb26d2788173a0d216fe022518260f7005fb067121aea66832938c4e57f",
+      "source_mapping_url": false
+    },
+    {
+      "url": "https://kubackicollective.com/_next/static/chunks/899-a411a3dde50c2688.js",
+      "status": "200",
+      "error": "",
+      "headers": {
+        "content-type": "text/javascript",
+        "content-length": "14303",
+        "server": "AmazonS3",
+        "cache-control": "public,max-age=31536000,immutable",
+        "last-modified": "Sun, 01 Nov 2026 05:19:22 GMT",
+        "x-cache": "Miss from cloudfront"
+      },
+      "bytes": 14303,
+      "sha256": "44bb4da2c33018c272ede608023c8add023690659678a4a87a6a142eb9b45333",
+      "source_mapping_url": false
+    },
+    {
+      "url": "https://kubackicollective.com/_next/static/chunks/app/layout-bc65b60eca9b4067.js",
+      "status": "200",
+      "error": "",
+      "headers": {
+        "content-type": "text/javascript",
+        "content-length": "4472",
+        "server": "AmazonS3",
+        "cache-control": "public,max-age=31536000,immutable",
+        "last-modified": "Sun, 01 Nov 2026 05:19:22 GMT",
+        "x-cache": "Miss from cloudfront"
+      },
+      "bytes": 4472,
+      "sha256": "1e26592cdfa440f73ff53f3e0159b20aba6b77c9ddd0f01545386eb55cfb43c4",
+      "source_mapping_url": false
+    },
+    {
+      "url": "https://kubackicollective.com/_next/static/chunks/app/page-65b77c0e04d044dd.js",
+      "status": "200",
+      "error": "",
+      "headers": {
+        "content-type": "text/javascript",
+        "content-length": "8338",
+        "server": "AmazonS3",
+        "cache-control": "public,max-age=31536000,immutable",
+        "last-modified": "Sun, 01 Nov 2026 05:19:22 GMT",
+        "x-cache": "Miss from cloudfront"
+      },
+      "bytes": 8338,
+      "sha256": "8f5c020168a1165bfdefbe55a5239d5fe27be2457eeb4a3ccabbb2034b618c0c",
+      "source_mapping_url": false
+    },
+    {
+      "url": "https://kubackicollective.com/_next/static/chunks/main-app-e9f236cd0d1dbd9b.js",
+      "status": "200",
+      "error": "",
+      "headers": {
+        "content-type": "text/javascript",
+        "content-length": "513",
+        "server": "AmazonS3",
+        "cache-control": "public,max-age=31536000,immutable",
+        "last-modified": "Sun, 01 Nov 2026 05:19:22 GMT",
+        "x-cache": "Miss from cloudfront"
+      },
+      "bytes": 513,
+      "sha256": "f31d857dde4c425a4191a7389d2e674f1f44ea3e86738ff0d111e79392e7bae0",
+      "source_mapping_url": false
+    },
+    {
+      "url": "https://kubackicollective.com/_next/static/chunks/polyfills-42372ed130431b0a.js",
+      "status": "200",
+      "error": "",
+      "headers": {
+        "content-type": "text/javascript",
+        "content-length": "112594",
+        "server": "AmazonS3",
+        "cache-control": "public,max-age=31536000,immutable",
+        "last-modified": "Sun, 01 Nov 2026 05:19:22 GMT",
+        "x-cache": "Miss from cloudfront"
+      },
+      "bytes": 112594,
+      "sha256": "0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683",
+      "source_mapping_url": false
+    },
+    {
+      "url": "https://kubackicollective.com/_next/static/chunks/webpack-03be40185d419232.js",
+      "status": "200",
+      "error": "",
+      "headers": {
+        "content-type": "text/javascript",
+        "content-length": "3326",
+        "server": "AmazonS3",
+        "cache-control": "public,max-age=31536000,immutable",
+        "last-modified": "Sun, 01 Nov 2026 05:19:22 GMT",
+        "x-cache": "Miss from cloudfront"
+      },
+      "bytes": 3326,
+      "sha256": "dc52f01de5f6ae5dec018d96bd8dd79eb97989821eff150659bc600b80c902b4",
+      "source_mapping_url": false
+    },
+    {
+      "url": "https://kubackicollective.com/_next/static/css/5598e516e375c3c6.css",
+      "status": "200",
+      "error": "",
+      "headers": {
+        "content-type": "text/css",
+        "content-length": "26789",
+        "server": "AmazonS3",
+        "cache-control": "public,max-age=31536000,immutable",
+        "last-modified": "Sun, 01 Nov 2026 05:19:22 GMT",
+        "x-cache": "Miss from cloudfront"
+      },
+      "bytes": 26789,
+      "sha256": "e872ec08b34c97dad5b1178c01d97361569aaf7c6366e6fafc50c4fe2b332b00",
+      "source_mapping_url": false
+    },
+    {
+      "url": "https://kubackicollective.com/_next/static/chunks/2248ea59-88c8a07e622fa89d.js.map",
+      "status": "404",
+      "error": "",
+      "headers": {
+        "content-type": "text/html",
+        "content-length": "14113",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "last-modified": "Sun, 01 Nov 2026 05:19:33 GMT",
+        "server": "AmazonS3",
+        "x-cache": "Error from cloudfront"
+      },
+      "bytes": 14113,
+      "sha256": "c1ff1aea1ef41d43ffeb6ae50e08a5edad800942178a5ab634886bd6a1b4359f",
+      "source_mapping_url": false
+    },
+    {
+      "url": "https://kubackicollective.com/_next/static/chunks/628-44c4ebce9f969df5.js.map",
+      "status": "404",
+      "error": "",
+      "headers": {
+        "content-type": "text/html",
+        "content-length": "14113",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "last-modified": "Sun, 01 Nov 2026 05:19:33 GMT",
+        "server": "AmazonS3",
+        "x-cache": "Error from cloudfront"
+      },
+      "bytes": 14113,
+      "sha256": "c1ff1aea1ef41d43ffeb6ae50e08a5edad800942178a5ab634886bd6a1b4359f",
+      "source_mapping_url": false
+    },
+    {
+      "url": "https://kubackicollective.com/_next/static/chunks/732-ae36296b137f98dc.js.map",
+      "status": "404",
+      "error": "",
+      "headers": {
+        "content-type": "text/html",
+        "content-length": "14113",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "last-modified": "Sun, 01 Nov 2026 05:19:33 GMT",
+        "server": "AmazonS3",
+        "x-cache": "Error from cloudfront"
+      },
+      "bytes": 14113,
+      "sha256": "c1ff1aea1ef41d43ffeb6ae50e08a5edad800942178a5ab634886bd6a1b4359f",
+      "source_mapping_url": false
+    },
+    {
+      "url": "https://kubackicollective.com/_next/static/chunks/807-3c852875da7574a4.js.map",
+      "status": "404",
+      "error": "",
+      "headers": {
+        "content-type": "text/html",
+        "content-length": "14113",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "last-modified": "Sun, 01 Nov 2026 05:19:33 GMT",
+        "server": "AmazonS3",
+        "x-cache": "Error from cloudfront"
+      },
+      "bytes": 14113,
+      "sha256": "c1ff1aea1ef41d43ffeb6ae50e08a5edad800942178a5ab634886bd6a1b4359f",
+      "source_mapping_url": false
+    },
+    {
+      "url": "https://kubackicollective.com/_next/static/chunks/899-a411a3dde50c2688.js.map",
+      "status": "404",
+      "error": "",
+      "headers": {
+        "content-type": "text/html",
+        "content-length": "14113",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "last-modified": "Sun, 01 Nov 2026 05:19:33 GMT",
+        "server": "AmazonS3",
+        "x-cache": "Error from cloudfront"
+      },
+      "bytes": 14113,
+      "sha256": "c1ff1aea1ef41d43ffeb6ae50e08a5edad800942178a5ab634886bd6a1b4359f",
+      "source_mapping_url": false
+    },
+    {
+      "url": "https://kubackicollective.com/_next/static/chunks/app/layout-bc65b60eca9b4067.js.map",
+      "status": "404",
+      "error": "",
+      "headers": {
+        "content-type": "text/html",
+        "content-length": "14113",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "last-modified": "Sun, 01 Nov 2026 05:19:33 GMT",
+        "server": "AmazonS3",
+        "x-cache": "Error from cloudfront"
+      },
+      "bytes": 14113,
+      "sha256": "c1ff1aea1ef41d43ffeb6ae50e08a5edad800942178a5ab634886bd6a1b4359f",
+      "source_mapping_url": false
+    },
+    {
+      "url": "https://kubackicollective.com/_next/static/chunks/app/page-65b77c0e04d044dd.js.map",
+      "status": "404",
+      "error": "",
+      "headers": {
+        "content-type": "text/html",
+        "content-length": "14113",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "last-modified": "Sun, 01 Nov 2026 05:19:33 GMT",
+        "server": "AmazonS3",
+        "x-cache": "Error from cloudfront"
+      },
+      "bytes": 14113,
+      "sha256": "c1ff1aea1ef41d43ffeb6ae50e08a5edad800942178a5ab634886bd6a1b4359f",
+      "source_mapping_url": false
+    },
+    {
+      "url": "https://kubackicollective.com/_next/static/chunks/main-app-e9f236cd0d1dbd9b.js.map",
+      "status": "404",
+      "error": "",
+      "headers": {
+        "content-type": "text/html",
+        "content-length": "14113",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "last-modified": "Sun, 01 Nov 2026 05:19:33 GMT",
+        "server": "AmazonS3",
+        "x-cache": "Error from cloudfront"
+      },
+      "bytes": 14113,
+      "sha256": "c1ff1aea1ef41d43ffeb6ae50e08a5edad800942178a5ab634886bd6a1b4359f",
+      "source_mapping_url": false
+    },
+    {
+      "url": "https://kubackicollective.com/_next/static/chunks/polyfills-42372ed130431b0a.js.map",
+      "status": "404",
+      "error": "",
+      "headers": {
+        "content-type": "text/html",
+        "content-length": "14113",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "last-modified": "Sun, 01 Nov 2026 05:19:33 GMT",
+        "server": "AmazonS3",
+        "x-cache": "Error from cloudfront"
+      },
+      "bytes": 14113,
+      "sha256": "c1ff1aea1ef41d43ffeb6ae50e08a5edad800942178a5ab634886bd6a1b4359f",
+      "source_mapping_url": false
+    },
+    {
+      "url": "https://kubackicollective.com/_next/static/chunks/webpack-03be40185d419232.js.map",
+      "status": "404",
+      "error": "",
+      "headers": {
+        "content-type": "text/html",
+        "content-length": "14113",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "last-modified": "Sun, 01 Nov 2026 05:19:33 GMT",
+        "server": "AmazonS3",
+        "x-cache": "Error from cloudfront"
+      },
+      "bytes": 14113,
+      "sha256": "c1ff1aea1ef41d43ffeb6ae50e08a5edad800942178a5ab634886bd6a1b4359f",
+      "source_mapping_url": false
+    }
+  ],
+  "additional_origin_and_artifact_probes": [
+    {
+      "url": "http://kubackicollective.com.s3-website-us-west-2.amazonaws.com/",
+      "status": "200",
+      "error": "",
+      "headers": {
+        "server": "AmazonS3",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "last-modified": "Sun, 01 Nov 2026 05:19:33 GMT",
+        "content-type": "text/html",
+        "content-length": "14113"
+      },
+      "bytes": 14113,
+      "sha256": "c1ff1aea1ef41d43ffeb6ae50e08a5edad800942178a5ab634886bd6a1b4359f"
+    },
+    {
+      "url": "https://kubackicollective.com.s3.us-west-2.amazonaws.com/index.html",
+      "status": "000",
+      "error": "curl: (60) SSL: no alternative certificate subject name matches target host name 'kubackicollective.com.s3.us-west-2.amazonaws.com'\nMore details here: https://curl.se/docs/sslcerts.html\n\ncurl failed to verify the legitimacy of the server and therefore could not\nestablish a secure connection to it. To learn more about this situation and\nhow to fix it, please visit the web page mentioned above.",
+      "headers": {},
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "url": "https://kubackicollective.com.s3.us-west-2.amazonaws.com/?list-type=2&max-keys=1",
+      "status": "000",
+      "error": "curl: (60) SSL: no alternative certificate subject name matches target host name 'kubackicollective.com.s3.us-west-2.amazonaws.com'\nMore details here: https://curl.se/docs/sslcerts.html\n\ncurl failed to verify the legitimacy of the server and therefore could not\nestablish a secure connection to it. To learn more about this situation and\nhow to fix it, please visit the web page mentioned above.",
+      "headers": {},
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "url": "https://kubackicollective.com/_next/static/chunks/a6dad97d9634a72d.js.map",
+      "status": "200",
+      "error": "",
+      "headers": {
+        "content-type": "binary/octet-stream",
+        "content-length": "115717",
+        "server": "AmazonS3",
+        "cache-control": "public, max-age=31536000, immutable",
+        "last-modified": "Wed, 25 Feb 2026 22:45:16 GMT",
+        "x-cache": "Miss from cloudfront"
+      },
+      "bytes": 115717,
+      "sha256": "b26c4f42daadc4b7985198660eb4eaf2f4aedb8d5f46e8111c0128cbc11298fc",
+      "source_map_summary": {
+        "source_count": 1,
+        "sources_content_count": 1,
+        "sources": [
+          "turbopack:///node_modules/next/dist/build/polyfills/polyfill-nomodule.js"
+        ]
+      }
+    },
+    {
+      "url": "https://kubackicollective.com/.DS_Store",
+      "status": "200",
+      "error": "",
+      "headers": {
+        "content-type": "binary/octet-stream",
+        "content-length": "6148",
+        "server": "AmazonS3",
+        "cache-control": "public, max-age=31536000, immutable",
+        "last-modified": "Wed, 25 Feb 2026 22:45:16 GMT",
+        "x-cache": "Miss from cloudfront"
+      },
+      "bytes": 6148,
+      "sha256": "a8270cdd3fa3995ec124673ebb40548fc8b601c8448f39f153c8245da98f7a97"
+    },
+    {
+      "url": "https://kubackicollective.com.s3.us-west-2.amazonaws.com/.DS_Store",
+      "status": "000",
+      "error": "curl: (60) SSL: no alternative certificate subject name matches target host name 'kubackicollective.com.s3.us-west-2.amazonaws.com'\nMore details here: https://curl.se/docs/sslcerts.html\n\ncurl failed to verify the legitimacy of the server and therefore could not\nestablish a secure connection to it. To learn more about this situation and\nhow to fix it, please visit the web page mentioned above.",
+      "headers": {},
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "url": "https://kubackicollective.com.s3.us-west-2.amazonaws.com/images/.DS_Store",
+      "status": "000",
+      "error": "curl: (60) SSL: no alternative certificate subject name matches target host name 'kubackicollective.com.s3.us-west-2.amazonaws.com'\nMore details here: https://curl.se/docs/sslcerts.html\n\ncurl failed to verify the legitimacy of the server and therefore could not\nestablish a secure connection to it. To learn more about this situation and\nhow to fix it, please visit the web page mentioned above.",
+      "headers": {},
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "url": "https://kubackicollective.com/index.txt",
+      "status": "200",
+      "error": "",
+      "headers": {
+        "content-type": "text/plain",
+        "content-length": "4195",
+        "server": "AmazonS3",
+        "cache-control": "public,max-age=0,must-revalidate",
+        "last-modified": "Sun, 01 Nov 2026 05:19:33 GMT",
+        "x-cache": "Miss from cloudfront"
+      },
+      "bytes": 4195,
+      "sha256": "4edb54f3183f7730dcccefea53950c3acb66cab45a684073b535851ced4e8ae4"
+    },
+    {
+      "url": "https://kubackicollective.com/collective.html",
+      "status": "200",
+      "error": "",
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "content-length": "15011",
+        "server": "AmazonS3",
+        "cache-control": "no-cache, no-store, must-revalidate",
+        "last-modified": "Wed, 25 Feb 2026 22:45:19 GMT",
+        "x-cache": "Miss from cloudfront"
+      },
+      "bytes": 15011,
+      "sha256": "c1e14a0c00f9e517505f01d26b41de5d86257ff9add0238ab77423ff7146802a"
+    }
+  ],
+  "notes": [
+    "Repeated homepage HTML on missing paths had HTTP 404; it is not evidence of secret-file exposure.",
+    "Dotted bucket virtual-hosted HTTPS probes failed hostname verification; certificate-valid path-style REST access was then verified separately.",
+    "Python system TLS client lacked TLS 1.3 support; final protocol checks used current Homebrew OpenSSL."
+  ]
+}

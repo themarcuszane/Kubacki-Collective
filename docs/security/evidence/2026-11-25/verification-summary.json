@@ -1,0 +1,52 @@
+{
+  "gitleaks": {
+    "version": "8.30.1",
+    "official_release_archive": "gitleaks_8.30.1_darwin_arm64.tar.gz",
+    "verified_sha256": "b40ab0ae55c505963e365f271a8d3846efbc170aa17f2607f13df610a9aeb6a5",
+    "redaction": "100 percent",
+    "history": {
+      "reachable_local_commits": 39,
+      "tool_reported_scanned_commits": 37,
+      "tool_reported_scanned_bytes": 1315215,
+      "reported_leaks": 0
+    },
+    "published_text_artifacts": {
+      "files": 248,
+      "bytes": 2903320,
+      "raw_findings": 1,
+      "verified_secrets": 0,
+      "triaged_false_positives": [
+        {
+          "rule": "generic-api-key",
+          "file": "chapters/chapter-01-signals/__next._tree.txt",
+          "line": 2,
+          "field": "paramKey",
+          "value_is_known_public_route_slug": true,
+          "classification": "Next.js route-tree serialization, not a credential"
+        }
+      ]
+    }
+  },
+  "unit_tests": {
+    "command": "npm test",
+    "result": "passed",
+    "files": 1,
+    "tests": 3
+  },
+  "typescript": {
+    "command": "npx tsc --noEmit --incremental false",
+    "exit_code": 0
+  },
+  "content_path_reproduction": {
+    "command_description": "getContentBySlug('chapters', '../../ARCHITECTURE') using Node TypeScript support",
+    "read_existing_public_architecture_document_outside_content_directory": true,
+    "characters_read": 4650,
+    "http_exploitation_demonstrated": false,
+    "applies_to_current_static_host": false
+  },
+  "scope_limits": [
+    "No production write attempts, load tests, authentication account creation, or live database modifications.",
+    "No full successful E2E/build run claimed; historical failing CI inspected.",
+    "A scanner negative result does not prove no secrets/vulnerabilities exist."
+  ]
+}

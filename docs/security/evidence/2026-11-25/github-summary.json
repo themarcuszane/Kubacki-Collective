@@ -1,0 +1,54 @@
+{
+  "source_commit": "f96ef62045fad4b4b6c4bb1821120e543b91c3ce",
+  "visibility": "public",
+  "default_branch": "main",
+  "main_branch_protected": false,
+  "rulesets": [],
+  "secret_scanning": "enabled",
+  "secret_scanning_push_protection": "enabled",
+  "secret_scanning_non_provider_patterns": "disabled",
+  "secret_scanning_validity_checks": "disabled",
+  "secret_scanning_open_alert_query_entries": 0,
+  "dependabot_security_updates": "disabled",
+  "dependabot_alert_api_message": "Dependabot alerts are disabled for this repository.",
+  "code_scanning_api_message": "no analysis found",
+  "actions_default_workflow_permissions": "read",
+  "actions_can_approve_pull_request_reviews": false,
+  "latest_five_push_runs": [
+    {
+      "id": 41276495298,
+      "conclusion": "failure",
+      "source_commit": "f96ef62045fad4b4b6c4bb1821120e543b91c3ce"
+    },
+    {
+      "id": 41276106492,
+      "conclusion": "failure"
+    },
+    {
+      "id": 41275609083,
+      "conclusion": "failure"
+    },
+    {
+      "id": 41275119797,
+      "conclusion": "failure"
+    },
+    {
+      "id": 41274971320,
+      "conclusion": "failure"
+    }
+  ],
+  "reviewed_commit_ci": {
+    "url": "https://github.com/themarcuszane/Kubacki-Collective/actions/runs/41276495298",
+    "unit_tests": "success",
+    "e2e": "failure",
+    "build": "skipped",
+    "error_summary": "Supabase project URL/key required by global middleware; not configured in this workflow."
+  },
+  "workflow_observations": [
+    "Node 20 configured; official end-of-life April 30, 2026",
+    "Major-version tags used for GitHub Actions",
+    "No explicit workflow permissions block",
+    "No dependency audit / secret scanner / source security job in tracked workflow"
+  ],
+  "review_publication": "No repository protections or security settings changed; issues and review branch only."
+}
