@@ -71,4 +71,29 @@ describe("content utilities", () => {
       fs.rmSync(fixture, { recursive: true, force: true });
     }
   });
+
+  it("rejects symlinked content roots and collection directories", () => {
+    const originalCwd = process.cwd();
+    const fixture = fs.mkdtempSync(path.join(os.tmpdir(), "collective-content-"));
+    try {
+      fs.mkdirSync(path.join(fixture, "outside", "chapters"), { recursive: true });
+      fs.mkdirSync(path.join(fixture, "outside", "journal"), { recursive: true });
+      fs.writeFileSync(path.join(fixture, "outside", "chapters", "external-note.mdx"), "---\ntitle: External\n---\nExternal body");
+
+      fs.symlinkSync(path.join(fixture, "outside"), path.join(fixture, "content"));
+      process.chdir(fixture);
+      expect(() => getAllSlugs("chapters")).toThrow(/real directory/);
+      process.chdir(originalCwd);
+      fs.rmSync(path.join(fixture, "content"));
+
+      fs.mkdirSync(path.join(fixture, "content"), { recursive: true });
+      fs.symlinkSync(path.join(fixture, "outside", "chapters"), path.join(fixture, "content", "chapters"));
+      fs.mkdirSync(path.join(fixture, "content", "journal"));
+      process.chdir(fixture);
+      expect(() => getAllSlugs("chapters")).toThrow(/real directory/);
+    } finally {
+      process.chdir(originalCwd);
+      fs.rmSync(fixture, { recursive: true, force: true });
+    }
+  });
 });

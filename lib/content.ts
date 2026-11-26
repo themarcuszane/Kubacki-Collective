@@ -20,7 +20,21 @@ export type ContentItem<TFrontmatter extends FrontmatterBase = FrontmatterBase> 
 };
 
 function contentDir(type: ContentType) {
-  return path.join(process.cwd(), "content", type);
+  if (type !== "chapters" && type !== "journal") throw new Error(`Unknown content type: ${String(type)}`);
+  const contentRoot = path.join(process.cwd(), "content");
+  const dir = path.join(contentRoot, type);
+  for (const candidate of [contentRoot, dir]) {
+    const stat = fs.lstatSync(candidate);
+    if (!stat.isDirectory() || stat.isSymbolicLink()) {
+      throw new Error(`Content directory must be a real directory: ${candidate}`);
+    }
+  }
+  const resolvedRoot = fs.realpathSync(contentRoot);
+  const resolvedDir = fs.realpathSync(dir);
+  if (path.dirname(resolvedDir) !== resolvedRoot) {
+    throw new Error(`Content directory is outside its root: ${dir}`);
+  }
+  return dir;
 }
 
 function readFileSafe(filePath: string) {
