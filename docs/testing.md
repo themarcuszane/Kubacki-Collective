@@ -1,6 +1,6 @@
 # Testing Kubacki Collective
 
-Use Node.js 24 and the committed npm lockfile. CI pins Ubuntu 24.04 because the locked Playwright 1.58 browser builds do not support Ubuntu 26.04. The GitHub job uses read-only repository permissions and pinned GitHub Actions. CI configuration is in `.github/workflows/`.
+Use Node.js 24 and the committed npm lockfile. CI pins Ubuntu 24.04 because the locked Playwright 1.58 browser builds do not support Ubuntu 26.04. CI uses pinned GitHub Actions. In addition to tests, CI runs separate full and production npm audits, scans all Git history and the exported public files with checksum-verified Gitleaks, and analyzes JavaScript/TypeScript with CodeQL `security-extended` queries. It packages the tested public export, manifest, and checksums. Only a successful push to `main` receives a GitHub artifact provenance attestation; pull requests have no OIDC or attestation write permissions. See the [release runbook](operations/release.md) for verification.
 
 ## Public collective site
 

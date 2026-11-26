@@ -37,7 +37,7 @@ Public routes are `/`, `/collective`, `/start`, `/chapters`, `/chapters/[slug]`,
 
 ## Content and image flow
 
-- `content/chapters/` and `content/journal/` hold trusted, reviewed MDX. Frontmatter and rendering are handled by `lib/content.ts` and the MDX components. New content becomes public only after it is committed and included in a new export.
+- `content/chapters/` and `content/journal/` hold trusted, reviewed MDX. Frontmatter and rendering are handled by `lib/content.ts` and the MDX components. Slugs come only from regular files with valid lowercase route names; drafts are excluded from direct reads, indexes, and static params. Resolved paths must remain under the selected content directory. New content becomes public only after it is committed and included in a new export. Treat repository MDX as trusted build-time code; arbitrary visitor-supplied MDX is never accepted.
 - `public/` holds static assets addressed by root-relative URLs. Keep image alternatives meaningful and verify image dimensions/crop on mobile and desktop.
 - `lib/public-images.ts` is the central portrait list for the home and Collective carousels. Keep each `src` aligned with a file under `public/`; keep descriptive `alt` text and a short label.
 - `components/collective/PortraitCarousel.tsx` owns carousel presentation and rotation. Honor reduced-motion preferences and ensure controls remain keyboard accessible when changing its behavior.
@@ -60,10 +60,11 @@ Keep the existing editorial tone and shared site shell. Prefer the design tokens
 | Public build, preview and upload | `scripts/build-public.mjs`, `scripts/serve-public.mjs`, `scripts/deploy-public.mjs` |
 | Test guidance | [`docs/testing.md`](docs/testing.md) |
 | Release procedure | [`docs/operations/release.md`](docs/operations/release.md) |
+| AWS hardening proposal (not applied) | [`docs/operations/aws-hardening.md`](docs/operations/aws-hardening.md), [`infra/aws/`](infra/aws/) |
 | Security posture and evidence | [`docs/security/2026-11-25-review.md`](docs/security/2026-11-25-review.md), [`docs/security/2026-11-25-carousel-check.md`](docs/security/2026-11-25-carousel-check.md) |
 
 ## Security and operational limits
 
 The static export narrows runtime exposure, but does not by itself secure the AWS account, S3 origin, DNS, build chain, dependency tree, or browser delivery. The dated security review records open dependency and infrastructure findings; consult it before describing any item as resolved. The S3 website origin has historically been publicly addressable over HTTP and can bypass CloudFront controls. Verify the current origin configuration and access policy during deployment. Do not put secrets in this repository or the output bucket. The public client bundle must contain only content intended for public visitors.
 
-For build, release, validation, and rollback steps, use the [release runbook](docs/operations/release.md). The static build manifest records the source commit, whether the checkout is dirty, build configuration, allowlisted sources, and hashes for every output file. A release must use a clean, committed source tree.
+For build, release, validation, and rollback steps, use the [release runbook](docs/operations/release.md). The static build manifest records the source commit, whether the checkout is dirty, build configuration, allowlisted sources, and hashes for every output file. CI packages the export ZIP, manifest, and SHA-256 sums from the tested clean commit; a trusted `main` job attests the ZIP and manifest. Operators verify those checks before deployment and must provide the reviewed manifest digest when applying uploads. A release must use a clean, committed source tree.

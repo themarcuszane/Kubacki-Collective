@@ -10,6 +10,8 @@ export function generateStaticParams() {
   return slugs.map((slug) => ({ slug }));
 }
 
+export const dynamicParams = false;
+
 export default async function JournalPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   let item: { slug: string; frontmatter: FrontmatterBase; content: string };

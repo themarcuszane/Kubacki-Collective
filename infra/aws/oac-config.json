@@ -1,0 +1,7 @@
+{
+  "Name": "kubacki-collective-private-origin",
+  "Description": "SigV4 OAC for the Kubacki Collective S3 REST origin",
+  "SigningProtocol": "sigv4",
+  "SigningBehavior": "always",
+  "OriginAccessControlOriginType": "s3"
+}

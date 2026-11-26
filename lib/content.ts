@@ -27,6 +27,28 @@ function readFileSafe(filePath: string) {
   return fs.readFileSync(filePath, "utf8");
 }
 
+const SLUG_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+
+function publishedFiles(type: ContentType): Map<string, string> {
+  if (type !== "chapters" && type !== "journal") throw new Error(`Unknown content type: ${String(type)}`);
+  const dir = contentDir(type);
+  const root = fs.realpathSync(dir);
+  const files = new Map<string, string>();
+
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const match = /^(.*)\.(mdx|md)$/.exec(entry.name);
+    if (!match || !SLUG_PATTERN.test(match[1]) || (!entry.isFile() && !entry.isSymbolicLink())) continue;
+    const candidate = path.join(dir, entry.name);
+    const resolved = fs.realpathSync(candidate);
+    if (!resolved.startsWith(`${root}${path.sep}`)) continue;
+    if (!fs.statSync(resolved).isFile()) continue;
+    const parsed = matter(readFileSafe(resolved));
+    if (parsed.data?.draft) continue;
+    files.set(match[1], resolved);
+  }
+  return files;
+}
+
 function normalizeFrontmatter<TFrontmatter extends FrontmatterBase>(
   data: Record<string, unknown>
 ): TFrontmatter {
@@ -38,24 +60,19 @@ function normalizeFrontmatter<TFrontmatter extends FrontmatterBase>(
 }
 
 export function getAllSlugs(type: ContentType) {
-  const dir = contentDir(type);
-  const files = fs.readdirSync(dir);
-  return files
-    .filter((f) => f.endsWith(".mdx") || f.endsWith(".md"))
-    .map((f) => f.replace(/\.(mdx|md)$/, ""));
+  return [...publishedFiles(type).keys()].sort();
 }
 
 export function getContentBySlug<TFrontmatter extends FrontmatterBase = FrontmatterBase>(
   type: ContentType,
   slug: string
 ): ContentItem<TFrontmatter> {
-  const dir = contentDir(type);
-  const filePathMdx = path.join(dir, `${slug}.mdx`);
-  const filePathMd = path.join(dir, `${slug}.md`);
-
-  const filePath = fs.existsSync(filePathMdx) ? filePathMdx : filePathMd;
-
-  if (!fs.existsSync(filePath)) {
+  if (type !== "chapters" && type !== "journal") throw new Error(`Unknown content type: ${String(type)}`);
+  if (typeof slug !== "string" || !SLUG_PATTERN.test(slug)) {
+    throw new Error(`Invalid content slug: ${String(slug)}`);
+  }
+  const filePath = publishedFiles(type).get(slug);
+  if (!filePath) {
     throw new Error(`Content not found: ${type}/${slug}`);
   }
 

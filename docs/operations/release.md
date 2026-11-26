@@ -4,23 +4,51 @@ Production for [kubackicollective.com](https://kubackicollective.com) is a stati
 
 ## 1. Prepare a release artifact
 
-1. Check out the merged commit and ensure `git status --short` is empty. Use Node.js 24 and the committed lockfile.
-2. `npm ci`
-3. `npm test`, `npm run build:public`, then `npm run test:e2e` (see [testing.md](../testing.md)).
-4. Confirm in `out.manifest.json` that `source_commit` is the intended commit and `source_dirty` is `false`.
-5. `npm run preview:public` and review the pages at phone and desktop widths.
+1. Use the `kubacki-collective-public-<commit>` artifact from the successful `main` CI run for the exact merged commit being released. The run must show green results for `test`, full/production dependency audits, history/artifact secret scanning, CodeQL, and the attestation job. Download the ZIP, `out.manifest.json`, and `SHA256SUMS` together.
+2. Verify checksums and provenance against the intended merge commit. Set `RELEASE_COMMIT` to that exact GitHub merge SHA, then run:
+
+   ```sh
+   shasum -a 256 --check SHA256SUMS
+   RELEASE_COMMIT='paste-exact-main-merge-commit-here'
+   test "$(python3 -c 'import json; print(json.load(open("out.manifest.json"))["source_commit"])')" = "$RELEASE_COMMIT"
+   test "$(python3 -c 'import json; print(json.load(open("out.manifest.json"))["source_dirty"])')" = "False"
+   gh attestation verify kubacki-collective-public-<commit>.zip --repo themarcuszane/Kubacki-Collective --signer-workflow themarcuszane/Kubacki-Collective/.github/workflows/ci.yml --source-ref refs/heads/main --source-digest "$RELEASE_COMMIT" --deny-self-hosted-runners
+   gh attestation verify out.manifest.json --repo themarcuszane/Kubacki-Collective --signer-workflow themarcuszane/Kubacki-Collective/.github/workflows/ci.yml --source-ref refs/heads/main --source-digest "$RELEASE_COMMIT" --deny-self-hosted-runners
+   ```
+
+   These checks bind both files to the main branch CI workflow and the exact source commit; do not accept a PR run, another workflow, or a different source digest. Extract the ZIP into `out/` without changing its files. Keep the CI run URL, manifest, checksums, and verification output with the release record.
+
+For a local candidate, check out the exact commit with an empty `git status --short`, use Node.js 24 and the committed lockfile, then run `npm ci`, `npm test`, `npm run build:public`, `npm run test:e2e`, and `python3 scripts/package-release.py`. Review `npm run preview:public` at phone and desktop widths. The CI artifact is built and tested in the same job before packaging.
 
 Keep the manifest and test output with the release record. The manifest is not uploaded to the site.
 
 ## 2. Take a rollback copy
 
-Bucket versioning is off, so copy the current production objects to a local directory before changing anything. Do not publish this copy.
+Bucket versioning is off, so copy current object bodies and capture each object's actual metadata before changing anything. This snapshot stays private and is not published. A recursive body sync alone is insufficient for restore because S3 website redirect, cache, content, and custom metadata must match the originals.
 
 ```sh
 aws s3 sync "s3://$SITE_BUCKET" "$BACKUP_DIR" --profile "$AWS_PROFILE" --region "$AWS_REGION"
+aws s3api list-objects-v2 --bucket "$SITE_BUCKET" --profile "$AWS_PROFILE" --region "$AWS_REGION" --output json > "$BACKUP_DIR/list-objects-v2.json"
+python3 - "$SITE_BUCKET" "$AWS_PROFILE" "$AWS_REGION" "$BACKUP_DIR" <<'PY'
+import base64, json, pathlib, subprocess, sys
+bucket, profile, region, backup = sys.argv[1:]
+backup = pathlib.Path(backup)
+inventory = json.loads((backup / "list-objects-v2.json").read_text())
+metadata_dir = backup / "object-metadata"
+metadata_dir.mkdir(parents=True, exist_ok=True)
+for item in inventory.get("Contents", []):
+    key = item["Key"]
+    common = ["aws", "s3api", "--profile", profile, "--region", region]
+    head = subprocess.run(common + ["head-object", "--bucket", bucket, "--key", key, "--output", "json"], check=True, capture_output=True, text=True)
+    tags = subprocess.run(common + ["get-object-tagging", "--bucket", bucket, "--key", key, "--output", "json"], check=True, capture_output=True, text=True)
+    name = base64.urlsafe_b64encode(key.encode()).decode().rstrip("=") + ".json"
+    record = {"key": key, "head_object": json.loads(head.stdout), "tagging": json.loads(tags.stdout)}
+    (metadata_dir / name).write_text(json.dumps(record, indent=2) + "\n")
+print(f"Saved metadata for {len(inventory.get('Contents', []))} objects")
+PY
 ```
 
-A synced copy does not keep redirect or cache metadata; `scripts/deploy-public.mjs` documents the values to restore.
+The AWS CLI paginates `list-objects-v2`; the saved inventory must include all pages. The capture loop saves exact `head-object` and tagging responses under base64-encoded key filenames, so spaces, slashes, and Unicode are preserved safely. Confirm the saved metadata count matches the inventory before upload. Preserve `ContentType`, `CacheControl`, `ContentEncoding`, `ContentDisposition`, `Expires`, custom `Metadata`, tags, and `WebsiteRedirectLocation` exactly as returned. The legacy `.html` objects use `WebsiteRedirectLocation`; cache metadata can differ by key. Restore using the saved values rather than inferring them from the current script or artifact.
 
 ## 3. Upload
 
@@ -34,10 +62,18 @@ Review the dry run, then apply it:
 
 ```sh
 node scripts/deploy-public.mjs
-node scripts/deploy-public.mjs --apply
 ```
 
-The script refuses a dirty checkout, dirty or mismatched manifest, duplicate keys, and keys that could escape the export directory. It sets MIME type and cache headers, uploads assets before pages and `index.html` last, and gives each legacy `route.html` key S3 website redirect metadata pointing to `/route/`. It never deletes. Old hashed bundles stay in place for cached clients; do not use `aws s3 sync --delete`.
+The script refuses a dirty checkout, dirty or mismatched manifest, duplicate keys, and keys that could escape the export directory. Before `--apply`, review the SHA-256 digest of the downloaded manifest and pass that exact value to the command:
+
+```sh
+shasum -a 256 out.manifest.json
+# Set this to the reviewed 64-character digest printed above.
+EXPECTED_MANIFEST_SHA256='paste-reviewed-digest-here'
+node scripts/deploy-public.mjs --apply --expected-manifest-sha256="$EXPECTED_MANIFEST_SHA256"
+```
+
+The digest is checked against the manifest bytes before any AWS upload begins. The script sets MIME type and cache headers, uploads assets before pages and `index.html` last, and gives each legacy `route.html` key S3 website redirect metadata pointing to `/route/`. It never deletes. Old hashed bundles stay in place for cached clients; do not use `aws s3 sync --delete`.
 
 Retiring a published file is a separate, explicit step. Delete exactly the named key and record it:
 

@@ -2,6 +2,7 @@ node_modules
 .next
 out
 out.manifest.json
+release-artifact/
 .collective-export-*/
 .env*
 !.env.example
