@@ -1,40 +1,18 @@
 // app/not-found.tsx
-import Link from "next/link";
+import Link from 'next/link';
 
 export default function NotFound() {
   return (
-    <main className="min-h-screen bg-black text-white">
-      <div className="mx-auto w-full max-w-3xl px-6 md:px-8 pt-20 pb-20">
-        <p className="text-xs uppercase tracking-[0.24em] text-white/60">404</p>
-        <h1 className="mt-3 text-3xl md:text-5xl font-semibold tracking-tight text-white">Not found.</h1>
-        <p className="mt-4 text-base leading-relaxed text-white/70">
+    <main id="main-content" tabIndex={-1} className="min-h-screen bg-[#12100f] text-[#f2eee6]">
+      <div className="mx-auto w-full max-w-3xl px-6 pb-20 pt-20 md:px-8">
+        <p className="text-[10px] uppercase tracking-[0.24em] text-[#c2a77a]">404</p>
+        <h1 className="display-serif mt-4 text-5xl leading-tight md:text-6xl">Not found.</h1>
+        <p className="mt-4 text-base leading-7 text-white/65">
           The page you’re looking for doesn’t exist — or it moved. Keep it clean. Keep it moving.
         </p>
-
-        <div className="mt-8 flex flex-wrap gap-3">
-          <Link
-            href="/"
-            className="rounded-full border border-white/15 bg-white/[0.05] px-5 py-2 text-sm text-white/85 hover:bg-white/[0.08] transition"
-          >
-            Back home
-          </Link>
-          {/*
-          <Link
-            href="/chapters"
-            className="rounded-full border border-white/15 bg-white/[0.05] px-5 py-2 text-sm text-white/85 hover:bg-white/[0.08] transition"
-          >
-            Chapters
-          </Link>
-          */}
-          {/*
-          <Link
-            href="/journal"
-            className="rounded-full border border-white/15 bg-white/[0.05] px-5 py-2 text-sm text-white/85 hover:bg-white/[0.08] transition"
-          >
-            Journal
-          </Link>
-          */}
-        </div>
+        <Link href="/" className="mt-8 inline-flex min-h-12 items-center border border-[#c2a77a] bg-[#c2a77a] px-6 text-[11px] uppercase tracking-[0.14em] text-[#12100f] hover:bg-[#dac59f]">
+          Back home
+        </Link>
       </div>
     </main>
   );

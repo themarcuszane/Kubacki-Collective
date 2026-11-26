@@ -1,157 +1,23 @@
-'use client';
-
-import Image from 'next/image';
 import Link from 'next/link';
-import { AnimatePresence, motion } from 'framer-motion';
-import { useEffect, useMemo, useState } from 'react';
-import HeroOverlay from '@/components/HeroOverlay';
-import Reveal from '@/components/Reveal';
-import { theme } from '@/lib/theme';
-
-const shirtPortrait = '/images/collective/derek-kubacki-shirt-poland.png';
-
-const heroImages = [
-  shirtPortrait,
-  '/images/hero/paris-coat.jpg',
-  '/images/hero/rain-neon.jpg',
-  '/images/hero/snow-fire.jpg'
-] as const;
-
-const heroCycleMs = 4500;
+import { PortraitCarousel } from '@/components/collective/PortraitCarousel';
+import { homePortraits } from '@/lib/public-images';
 
 export default function Hero() {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = window.setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % heroImages.length);
-    }, heroCycleMs);
-
-    return () => window.clearInterval(timer);
-  }, []);
-
-  const activeImage = useMemo(() => heroImages[activeIndex], [activeIndex]);
-
   return (
-    <section
-      aria-label="Kubacki Hero"
-      style={{
-        position: 'relative',
-        minHeight: 'calc(100svh - 5.4rem)',
-        overflow: 'hidden',
-        display: 'grid',
-        placeItems: 'center',
-        textAlign: 'center',
-        padding: `${theme.sectionPadding.y} ${theme.sectionPadding.x}`
-      }}
-    >
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={activeImage}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
-          style={{ position: 'absolute', inset: 0 }}
-        >
-          <motion.div
-            initial={{ scale: 1.02 }}
-            animate={{ scale: 1.06 }}
-            transition={{ duration: 14, ease: 'linear' }}
-            style={{ position: 'absolute', inset: 0 }}
-          >
-            <Image
-              src={activeImage}
-              alt={activeImage === shirtPortrait ? 'Derek wearing the Kubacki Collective shirt' : 'Kubacki atmospheric hero'}
-              fill
-              priority={activeIndex === 0}
-              loading={activeIndex === 0 ? 'eager' : 'lazy'}
-              sizes="100vw"
-              style={{
-                objectFit: activeImage === shirtPortrait ? 'contain' : 'cover',
-                objectPosition: activeImage === shirtPortrait ? 'center top' : 'center'
-              }}
-            />
-          </motion.div>
-        </motion.div>
-      </AnimatePresence>
-
-      <HeroOverlay />
-
-      <div style={{ position: 'relative', zIndex: 2, maxWidth: '60rem' }}>
-        <Reveal variant="slowReveal">
-          <h1
-            style={{
-              fontSize: 'clamp(2rem, 8vw, 7rem)',
-              lineHeight: 0.9,
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase'
-            }}
-          >
-            Kubacki Collective
-          </h1>
-        </Reveal>
-
-        <Reveal variant="fadeUp" delay={0.18}>
-          <p
-            style={{
-              marginTop: theme.spacing.lg,
-              fontSize: theme.typography.body,
-              letterSpacing: '0.08em',
-              textTransform: 'uppercase'
-            }}
-          >
-            A lifestyle creative movement by TeamDryBox LLC.
-          </p>
-        </Reveal>
-
-        <Reveal variant="fadeIn" delay={0.28}>
-          <p
-            style={{
-              marginTop: theme.spacing.md,
-              fontSize: theme.typography.micro,
-              letterSpacing: '0.18em',
-              textTransform: 'uppercase',
-              color: 'color-mix(in srgb, var(--color-off-white) 78%, var(--color-charcoal) 22%)'
-            }}
-          >
-            Not for everyone.
-          </p>
-        </Reveal>
-
-        <Reveal variant="fadeUp" delay={0.4}>
-          <Link
-            href="/collective"
-            style={{
-              display: 'inline-block',
-              marginTop: theme.spacing.xxl,
-              padding: `${theme.spacing.sm} ${theme.spacing.xl}`,
-              border: '1px solid color-mix(in srgb, var(--color-off-white) 66%, transparent 34%)',
-              background: 'transparent',
-              color: 'var(--color-off-white)',
-              fontSize: theme.typography.small,
-              letterSpacing: '0.12em',
-              textTransform: 'uppercase',
-              transition: 'color 220ms ease, border-color 220ms ease, background 220ms ease'
-            }}
-            onMouseEnter={(event) => {
-              event.currentTarget.style.borderColor =
-                'color-mix(in srgb, var(--color-brass) 70%, var(--color-off-white) 30%)';
-              event.currentTarget.style.color =
-                'color-mix(in srgb, var(--color-off-white) 88%, var(--color-brass) 12%)';
-              event.currentTarget.style.background =
-                'color-mix(in srgb, var(--color-brass) 14%, transparent 86%)';
-            }}
-            onMouseLeave={(event) => {
-              event.currentTarget.style.borderColor =
-                'color-mix(in srgb, var(--color-off-white) 66%, transparent 34%)';
-              event.currentTarget.style.color = 'var(--color-off-white)';
-              event.currentTarget.style.background = 'transparent';
-            }}
-          >
-            Enter the Collective
-          </Link>
-        </Reveal>
+    <section aria-label="Kubacki Hero" className="bg-[#12100f]">
+      <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 py-10 md:px-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16 lg:py-14">
+        <div>
+          <p className="text-[10px] uppercase tracking-[0.26em] text-[#c2a77a]">A lifestyle creative movement</p>
+          <h1 className="display-serif mt-6 text-[clamp(3.5rem,7.8vw,7.6rem)] leading-[0.92] text-[#f2eee6]">Kubacki{' '}<span className="block">Collective</span></h1>
+          <div className="mt-8 h-px w-16 bg-[#c2a77a]" />
+          <p className="mt-7 max-w-sm text-lg leading-relaxed text-white/75">Good taste. Quiet confidence. A point of view that comes from living.</p>
+          <p className="mt-4 text-[11px] uppercase tracking-[0.17em] text-white/50">By TeamDryBox LLC · Not for everyone.</p>
+          <div className="mt-9 flex flex-wrap items-center gap-x-7 gap-y-5">
+            <Link href="/collective" className="inline-flex min-h-12 items-center justify-center border border-[#c2a77a] bg-[#c2a77a] px-6 text-[11px] uppercase tracking-[0.14em] text-[#12100f] hover:bg-[#dac59f]">Enter the Collective <span aria-hidden="true" className="ml-4">↗</span></Link>
+            <a href="#manifesto" className="inline-flex min-h-12 items-center text-sm text-white/65 hover:text-[#f2eee6]">Our philosophy <span aria-hidden="true" className="ml-2">↓</span></a>
+          </div>
+        </div>
+        <PortraitCarousel images={homePortraits} label="Homepage portraits" />
       </div>
     </section>
   );

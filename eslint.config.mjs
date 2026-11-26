@@ -7,6 +7,8 @@ const eslintConfig = [
   {
     ignores: [
       '.next/**',
+      '.collective-export-*/**',
+      'out/**',
       'node_modules/**',
       'next.config.js',
       'app/chapters/[slug]/page.tsx',

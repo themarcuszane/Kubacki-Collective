@@ -1,14 +1,14 @@
 # Derek portrait carousel update: tests and security scope
 
-The user requested the finished Kubacki Collective shirt portrait in both public carousels. The portrait is first in each rotation; existing photographs remain. The full portrait uses `object-fit: contain` to retain the face and sleeve prints on narrow screens. The change adds one static PNG and changes carousel selection/presentation; it adds no dependencies, uploaded-file endpoint, external script, or authentication feature.
+The requested release adds the approved Derek Kubacki shirt portrait to both the homepage and Collective carousels and removes the inventor/workshop portrait from the public site and exported asset set. The portrait is first in each rotation; remaining approved photographs stay available. The carousel now has accessible previous/next, play/pause, and photo-selection controls, pauses for manual interaction, and respects reduced-motion preferences. The surrounding site received responsive layout, navigation, typography, and MDX readability refinements. The change adds one static PNG and no dependencies, upload endpoint, third-party script, or authentication feature.
 
 ## Functional verification
 
-- Production Next.js build passed.
-- Unit tests: 26 passed, including the new image-integrity test.
-- Chromium and WebKit: 26 browser checks passed, including loading the new portrait first and continuing rotation on both routes.
-- TypeScript checking and lint on changed source/test files passed.
-- Static export, desktop/mobile visual checks, and deployed-site verification are recorded in the production release when completed.
+- Public static export passed and contains 225 files; its manifest hashes every file and records the source commit and dirty state.
+- Unit tests: 26 passed, including the image-integrity test.
+- End-to-end tests: 32 passed across Chromium and WebKit. Coverage includes both carousels, reduced motion, play/pause, navigation, route/MDX behavior, branding, 404s, and removal of the inventor image reference and URL.
+- TypeScript checking and ESLint passed. Desktop Safari review covered the homepage and Collective page; the approved portrait and controls were visible. Responsive browser checks covered the mobile navigation.
+- Production deployment and live-site verification are recorded in the release report when completed.
 
 ## Image and code checks
 
