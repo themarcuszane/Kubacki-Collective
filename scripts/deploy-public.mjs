@@ -5,13 +5,18 @@ import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { assertExpectedManifestDigest } from './release-manifest.mjs';
 
 const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const { AWS_PROFILE: profile, AWS_REGION: region, SITE_BUCKET: bucket } = process.env;
 const apply = process.argv.includes('--apply');
+const expectedDigestFlag = process.argv.find(arg => arg.startsWith('--expected-manifest-sha256='));
+const expectedManifestDigest = expectedDigestFlag?.slice('--expected-manifest-sha256='.length);
 if (!profile || !region || !bucket) throw new Error('Set AWS_PROFILE, AWS_REGION and SITE_BUCKET');
 
-const manifest = JSON.parse(await readFile(path.join(repo, 'out.manifest.json'), 'utf8'));
+const manifestBytes = await readFile(path.join(repo, 'out.manifest.json'));
+if (apply) assertExpectedManifestDigest(manifestBytes, expectedManifestDigest);
+const manifest = JSON.parse(manifestBytes.toString('utf8'));
 const head = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: repo, encoding: 'utf8' }).trim();
 if (manifest.source_dirty) throw new Error('Manifest was built from a dirty tree');
 if (manifest.source_commit !== head) throw new Error('Manifest commit does not match HEAD');

@@ -42,6 +42,20 @@ jobs:
       - name: Public site E2E tests
         run: npm run test:e2e
 
+      - name: Package clean public release
+        run: python3 scripts/package-release.py
+
+      - name: Upload public release artifact
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: kubacki-collective-public-${{ github.sha }}
+          path: |
+            release-artifact/*.zip
+            release-artifact/out.manifest.json
+            release-artifact/SHA256SUMS
+          if-no-files-found: error
+          retention-days: 30
+
       - name: Upload Playwright report on failure
         if: failure()
         uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
@@ -49,3 +63,121 @@ jobs:
           name: playwright-report
           path: playwright-report
           retention-days: 7
+
+  dependency-audit:
+    name: Dependency audit (full and production)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - name: Setup Node
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: 24
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Audit full dependency tree (zero findings)
+        run: npm audit --audit-level=low
+      - name: Audit production dependency tree (zero findings)
+        run: npm audit --omit=dev --audit-level=low
+
+  source-and-artifact-secrets:
+    name: Source history and static export secret scan
+    needs: test
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          fetch-depth: 0
+      - name: Setup Node
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: 24
+      - name: Download checksum-verified Gitleaks
+        shell: bash
+        run: |
+          curl --fail --location --silent --show-error \
+            https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_checksums.txt \
+            --output "$RUNNER_TEMP/gitleaks-checksums.txt"
+          grep -Fx '551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb  gitleaks_8.30.1_linux_x64.tar.gz' "$RUNNER_TEMP/gitleaks-checksums.txt"
+          curl --fail --location --silent --show-error \
+            https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz \
+            --output "$RUNNER_TEMP/gitleaks.tar.gz"
+          echo '551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb  '"$RUNNER_TEMP/gitleaks.tar.gz" | sha256sum --check --strict
+          mkdir "$RUNNER_TEMP/gitleaks"
+          tar -xzf "$RUNNER_TEMP/gitleaks.tar.gz" -C "$RUNNER_TEMP/gitleaks" gitleaks
+          test "$("$RUNNER_TEMP/gitleaks/gitleaks" version)" = "8.30.1"
+      - name: Scan complete repository history
+        run: |
+          "$RUNNER_TEMP/gitleaks/gitleaks" git . --log-opts=--all --redact=100
+      - name: Download the tested public release artifact
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: kubacki-collective-public-${{ github.sha }}
+          path: release-artifact
+      - name: Scan exact tested public export
+        shell: bash
+        run: |
+          cd release-artifact
+          sha256sum --check --strict SHA256SUMS
+          public_export="$RUNNER_TEMP/kubacki-public-export"
+          mkdir "$public_export"
+          archive=$(find . -maxdepth 1 -name '*.zip' -print -quit)
+          test -n "$archive"
+          unzip -q "$archive" -d "$public_export"
+          "$RUNNER_TEMP/gitleaks/gitleaks" dir "$public_export" --redact=100
+
+  release-attestation:
+    name: Attest tested main public release
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: [test, dependency-audit, source-and-artifact-secrets, codeql]
+    runs-on: ubuntu-24.04
+    permissions:
+      actions: read
+      contents: read
+      id-token: write
+      attestations: write
+    steps:
+      - name: Download CI release artifact
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: kubacki-collective-public-${{ github.sha }}
+          path: release-artifact
+      - name: Verify release checksums
+        working-directory: release-artifact
+        run: sha256sum --check --strict SHA256SUMS
+      - name: Attest release ZIP and manifest
+        uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4.2.2
+        with:
+          subject-path: |
+            release-artifact/*.zip
+            release-artifact/out.manifest.json
+
+  codeql:
+    name: CodeQL JavaScript and TypeScript
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@33d7b85da1a04171e211befe2c739303b9a4c066 # v4.39.3
+        with:
+          languages: javascript-typescript
+          config-file: ./.github/codeql-config.yml
+      - name: Analyze
+        uses: github/codeql-action/analyze@33d7b85da1a04171e211befe2c739303b9a4c066 # v4.39.3
+        with:
+          category: "/language:javascript-typescript"

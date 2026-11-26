@@ -1,0 +1,3 @@
+name: "Kubacki Collective security-extended"
+queries:
+  - uses: security-extended

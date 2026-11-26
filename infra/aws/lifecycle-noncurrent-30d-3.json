@@ -1,0 +1,11 @@
+{
+  "Rules": [{
+    "ID": "KubackiCollectiveNoncurrentRetention30dKeep3",
+    "Status": "Enabled",
+    "Filter": { "Prefix": "" },
+    "NoncurrentVersionExpiration": {
+      "NoncurrentDays": 30,
+      "NewerNoncurrentVersions": 3
+    }
+  }]
+}
