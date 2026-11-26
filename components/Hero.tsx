@@ -8,7 +8,10 @@ import HeroOverlay from '@/components/HeroOverlay';
 import Reveal from '@/components/Reveal';
 import { theme } from '@/lib/theme';
 
+const shirtPortrait = '/images/collective/derek-kubacki-shirt-poland.png';
+
 const heroImages = [
+  shirtPortrait,
   '/images/hero/paris-coat.jpg',
   '/images/hero/rain-neon.jpg',
   '/images/hero/snow-fire.jpg'
@@ -59,12 +62,15 @@ export default function Hero() {
           >
             <Image
               src={activeImage}
-              alt="Kubacki atmospheric hero"
+              alt={activeImage === shirtPortrait ? 'Derek wearing the Kubacki Collective shirt' : 'Kubacki atmospheric hero'}
               fill
               priority={activeIndex === 0}
               loading={activeIndex === 0 ? 'eager' : 'lazy'}
               sizes="100vw"
-              style={{ objectFit: 'cover' }}
+              style={{
+                objectFit: activeImage === shirtPortrait ? 'contain' : 'cover',
+                objectPosition: activeImage === shirtPortrait ? 'center top' : 'center'
+              }}
             />
           </motion.div>
         </motion.div>

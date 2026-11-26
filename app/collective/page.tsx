@@ -3,7 +3,10 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
+const shirtPortrait = "/images/collective/derek-kubacki-shirt-poland.png";
+
 const IMAGES: string[] = [
+  shirtPortrait,
   "/images/collective/inventor.jpeg",
   "/images/collective/mountain-view.jpg",
   "/images/collective/nyc-walk-01.jpg",
@@ -36,7 +39,8 @@ export default function CollectivePage() {
             alt=""
             fill
             priority={i === 0}
-            className={`object-cover object-[50%_20%] transition-opacity duration-1000 ${
+            sizes="100vw"
+            className={`${src === shirtPortrait ? "object-contain object-top" : "object-cover object-[50%_20%]"} transition-opacity duration-1000 ${
               i === index ? "opacity-100" : "opacity-0"
             }`}
           />

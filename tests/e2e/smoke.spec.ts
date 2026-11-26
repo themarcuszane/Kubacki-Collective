@@ -1,6 +1,29 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("Kubacki Collective public site", () => {
+  for (const [route, nextPhoto] of [["/", "/images/hero/paris-coat.jpg"], ["/collective", "/images/collective/inventor.jpeg"]]) {
+    test(`new shirt portrait leads ${route} carousel and rotation continues`, async ({ page }) => {
+      await page.clock.install({ time: new Date("2026-11-25T12:00:00Z") });
+      await page.clock.pauseAt(new Date("2026-11-25T12:00:01Z"));
+      await page.goto(route, { waitUntil: "networkidle" });
+      await page.clock.runFor(1500);
+      const portrait = page.locator('img[src="/images/collective/derek-kubacki-shirt-poland.png"]');
+      await expect(portrait).toBeVisible();
+      await expect(portrait).toHaveCSS("object-fit", "contain");
+      await expect.poll(() => portrait.evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 0)).toBe(true);
+      if (route === "/collective") {
+        await expect(portrait).toHaveCSS("opacity", "1");
+      }
+      await page.clock.runFor(route === "/" ? 6000 : 2000);
+      if (route === "/") {
+        await expect(page.locator(`img[src="${nextPhoto}"]`)).toBeVisible();
+      } else {
+        await expect(portrait).toHaveCSS("opacity", "0");
+        await expect(page.locator(`img[src="${nextPhoto}"]`)).toHaveCSS("opacity", "1");
+      }
+    });
+  }
+
   test("landing page shows the collective and company branding", async ({ page }) => {
     const response = await page.goto("/", { waitUntil: "domcontentloaded" });
     expect(response?.status()).toBe(200);
