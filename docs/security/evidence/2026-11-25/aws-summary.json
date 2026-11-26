@@ -1,0 +1,142 @@
+{
+  "review_mode": "Read-only configuration and anonymous GET checks; account identifiers/identity ARNs omitted.",
+  "cloudfront": {
+    "aliases": [
+      "www.kubackicollective.com",
+      "kubackicollective.com"
+    ],
+    "enabled": true,
+    "default_root_object": "index.html",
+    "viewer_protocol_policy": "redirect-to-https",
+    "minimum_tls_policy": "TLSv1.3_2025",
+    "allowed_methods": [
+      "HEAD",
+      "GET"
+    ],
+    "additional_cache_behaviors": 0,
+    "response_headers_policy_present": false,
+    "cache_policy_id": "658327ea-f89d-4fab-a63d-7e88639e58f6",
+    "origin_domain": "kubackicollective.com.s3-website-us-west-2.amazonaws.com",
+    "origin_protocol_policy": "http-only",
+    "oac_configured": false,
+    "custom_origin_headers_count": 0,
+    "legacy_access_logging": false,
+    "realtime_log_association_present": false,
+    "waf_attached": true,
+    "cloudfront_functions_count": 0,
+    "lambda_edge_count": 0
+  },
+  "s3": {
+    "bucket": "kubackicollective.com",
+    "region": "us-west-2",
+    "public_access_block": {
+      "BlockPublicAcls": false,
+      "IgnorePublicAcls": false,
+      "BlockPublicPolicy": false,
+      "RestrictPublicBuckets": false
+    },
+    "account_public_access_block": "NoSuchPublicAccessBlockConfiguration",
+    "policy": {
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Sid": "PublicReadGetObject",
+          "Effect": "Allow",
+          "Principal": "*",
+          "Action": "s3:GetObject",
+          "Resource": "arn:aws:s3:::kubackicollective.com/*"
+        }
+      ]
+    },
+    "policy_status": {
+      "IsPublic": true
+    },
+    "acl": "Owner FULL_CONTROL only",
+    "object_ownership": {
+      "Rules": [
+        {
+          "ObjectOwnership": "BucketOwnerEnforced"
+        }
+      ]
+    },
+    "encryption": {
+      "Rules": [
+        {
+          "ApplyServerSideEncryptionByDefault": {
+            "SSEAlgorithm": "AES256"
+          },
+          "BucketKeyEnabled": true,
+          "BlockedEncryptionTypes": {
+            "EncryptionType": [
+              "SSE-C"
+            ]
+          }
+        }
+      ]
+    },
+    "versioning": "Unversioned; GetBucketVersioning returned no status",
+    "server_access_logging": "No LoggingEnabled returned",
+    "cors": "NoSuchCORSConfiguration",
+    "website": {
+      "IndexDocument": {
+        "Suffix": "index.html"
+      },
+      "ErrorDocument": {
+        "Key": "index.html"
+      }
+    },
+    "lifecycle": "NoSuchLifecycleConfiguration",
+    "replication": "ReplicationConfigurationNotFoundError",
+    "inventory": {
+      "count": 266,
+      "truncated": false,
+      "total_bytes": 5795662,
+      "selected_unintended_keys": [
+        ".DS_Store",
+        "images/.DS_Store",
+        "images/.gitkeep",
+        "images/hero/.gitkeep",
+        "_next/static/chunks/a6dad97d9634a72d.js.map"
+      ]
+    },
+    "anonymous_rest_index_probe": {
+      "url": "https://s3.us-west-2.amazonaws.com/kubackicollective.com/index.html",
+      "status": 200,
+      "body_matches_public_homepage": true
+    }
+  },
+  "waf": {
+    "managed_rule_groups": [
+      "AWSManagedRulesAmazonIpReputationList",
+      "AWSManagedRulesCommonRuleSet",
+      "AWSManagedRulesKnownBadInputsRuleSet"
+    ],
+    "overrides": [
+      {
+        "None": {}
+      },
+      {
+        "None": {}
+      },
+      {
+        "None": {}
+      }
+    ],
+    "default_action": {
+      "Allow": {}
+    },
+    "metrics_and_sampled_requests_enabled": true
+  },
+  "unverified_due_to_access_denied": [
+    "Effective IAM policies and deployment identity hardening",
+    "WAF persistent logging configuration",
+    "CloudWatch/CloudFront v2 log delivery sources",
+    "Route53 hosted zones / authoritative DNS management",
+    "CloudTrail discovery and event coverage"
+  ],
+  "admin_session": "Existing admin SSO token expired and refresh failed; no interactive login attempted.",
+  "other_limits": [
+    "Registrar protections, external backup systems, and alert destinations were not established.",
+    "No live Supabase backend was audited; CareerOS is not the current public static site."
+  ]
+}

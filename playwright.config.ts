@@ -4,11 +4,14 @@ const PORT = process.env.PORT ? Number(process.env.PORT) : 3000;
 
 export default defineConfig({
   testDir: "./tests/e2e",
+  testMatch: "**/smoke.spec.ts",
   timeout: 60_000,
   expect: {
     timeout: 10_000,
   },
   fullyParallel: true,
+  forbidOnly: Boolean(process.env.CI),
+  workers: process.env.CI ? 2 : undefined,
   retries: process.env.CI ? 2 : 0,
   reporter: [["html"], ["list"]],
   use: {
@@ -22,7 +25,7 @@ export default defineConfig({
     { name: "webkit", use: { ...devices["Desktop Safari"] } },
   ],
   webServer: {
-    command: `npm run dev -- --port ${PORT}`,
+    command: `npm run start -- --port ${PORT}`,
     port: PORT,
     reuseExistingServer: false,
     timeout: 120_000,

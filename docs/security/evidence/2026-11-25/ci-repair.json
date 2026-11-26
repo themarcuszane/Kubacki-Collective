@@ -1,0 +1,28 @@
+{
+  "scope": "Repair CI runner incompatibility and public-site dependence on unrelated CareerOS configuration",
+  "runner": "ubuntu-24.04",
+  "node_major": 24,
+  "workflow_permissions": { "contents": "read" },
+  "actions": "Maintained checkout/setup-node v6 and upload-artifact v5 pinned to resolved official commit SHAs",
+  "local_validation": {
+    "node_version": "24.22.1",
+    "unit_tests": { "passed": 25, "files": 2 },
+    "production_build": "passed; public pages prerendered without Supabase configuration",
+    "type_check": "passed",
+    "lint_changed_typescript": "passed",
+    "public_browser_tests": {
+      "passed": 22,
+      "projects": ["chromium", "webkit"],
+      "server": "next start against the production build",
+      "supabase_url_and_key": "explicitly unset",
+      "coverage": ["branding", "public routes and trailing slashes", "MDX navigation", "404 response"]
+    },
+    "careeros_config_guard": "Expected clear configuration error verified when test-project variables are absent",
+    "careeros_backend_tests": "Not run; requires separately configured dedicated test project"
+  },
+  "remote_validation": "Latest PR #11 checks provide the authoritative GitHub CI result",
+  "limitations": [
+    "This repair does not implement the remaining dependency/security-monitoring or AWS remediation findings.",
+    "No S3/CloudFront production deployment or live Supabase modification is performed."
+  ]
+}

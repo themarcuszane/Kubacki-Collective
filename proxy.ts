@@ -6,5 +6,16 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)']
+  // Refresh sessions only for the separate CareerOS scaffold. Public collective
+  // pages and assets must work without Supabase configuration or network calls.
+  matcher: [
+    '/sign-in/:path*',
+    '/sign-up/:path*',
+    '/auth/:path*',
+    '/dashboard/:path*',
+    '/onboarding/:path*',
+    '/opportunities/:path*',
+    '/pipeline/:path*',
+    '/settings/:path*'
+  ]
 };

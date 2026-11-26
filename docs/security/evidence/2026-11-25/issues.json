@@ -1,0 +1,65 @@
+[
+  {
+    "review_id": "SEC-01",
+    "severity": "Medium",
+    "number": 1,
+    "url": "https://github.com/themarcuszane/Kubacki-Collective/issues/1",
+    "title": "[Security][Medium] Replace public HTTP origin with private OAC access"
+  },
+  {
+    "review_id": "SEC-02",
+    "severity": "Medium",
+    "number": 2,
+    "url": "https://github.com/themarcuszane/Kubacki-Collective/issues/2",
+    "title": "[Security][Medium] Add CloudFront browser security headers"
+  },
+  {
+    "review_id": "SEC-03",
+    "severity": "High",
+    "number": 3,
+    "url": "https://github.com/themarcuszane/Kubacki-Collective/issues/3",
+    "title": "[Security][High] Update vulnerable locked dependencies"
+  },
+  {
+    "review_id": "SEC-04",
+    "severity": "Medium",
+    "number": 4,
+    "url": "https://github.com/themarcuszane/Kubacki-Collective/issues/4",
+    "title": "[Security][Medium] Protect main and release integrity"
+  },
+  {
+    "review_id": "SEC-05",
+    "severity": "Medium",
+    "number": 5,
+    "url": "https://github.com/themarcuszane/Kubacki-Collective/issues/5",
+    "title": "[Security][Medium] Restore CI and continuous security checks"
+  },
+  {
+    "review_id": "SEC-06",
+    "severity": "Medium",
+    "number": 6,
+    "url": "https://github.com/themarcuszane/Kubacki-Collective/issues/6",
+    "title": "[Security][Medium] Make static releases reproducible and exclude unintended artifacts"
+  },
+  {
+    "review_id": "SEC-07",
+    "severity": "Low",
+    "number": 7,
+    "url": "https://github.com/themarcuszane/Kubacki-Collective/issues/7",
+    "title": "[Security][Low] Establish versioned origin recovery"
+  },
+  {
+    "review_id": "SEC-08",
+    "severity": "Medium, conditional",
+    "number": 8,
+    "url": "https://github.com/themarcuszane/Kubacki-Collective/issues/8",
+    "title": "[Security][Medium, conditional] Constrain MDX filesystem paths before server exposure"
+  },
+  {
+    "review_id": "GAP-01",
+    "severity": "Verification gap",
+    "number": 9,
+    "url": "https://github.com/themarcuszane/Kubacki-Collective/issues/9",
+    "title": "[Security][Verification gap] Complete restricted control verification"
+  }
+]
